@@ -1,0 +1,42 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
+from django.db import models, migrations
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+    ]
+
+    operations = [
+        migrations.CreateModel(
+            name='Contact',
+            fields=[
+                ('id', models.AutoField(primary_key=True, serialize=False, auto_created=True, verbose_name='ID')),
+                ('first_name', models.CharField(max_length=50)),
+                ('last_name', models.CharField(max_length=50)),
+                ('company_name', models.CharField(max_length=200)),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Localization',
+            fields=[
+                ('id', models.AutoField(primary_key=True, serialize=False, auto_created=True, verbose_name='ID')),
+                ('name', models.CharField(max_length=200)),
+                ('phone1', models.CharField(max_length=20)),
+                ('phone2', models.CharField(max_length=20)),
+                ('address1', models.CharField(max_length=100)),
+                ('address2', models.CharField(max_length=100)),
+                ('email1', models.EmailField(max_length=254)),
+                ('email2', models.EmailField(max_length=254)),
+                ('contact', models.ForeignKey(to='agenda.Contact')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+    ]

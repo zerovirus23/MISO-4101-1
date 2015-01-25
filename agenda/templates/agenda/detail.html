@@ -1,0 +1,12 @@
+<h1>{{contact.first_name}} {{contact.last_name}}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="" method="post">
+{% csrf_token %}
+{% for localization in contact.localization_set.all %}
+    <input type="radio" name="localization" id="localization{{ forloop.counter }}" value="{{ localization.id }}" />
+    <label for="localization{{ forloop.counter }}">{{ localization.name }}</label><br />
+{% endfor %}
+<input type="submit" value="Actualizar" />
+</form>

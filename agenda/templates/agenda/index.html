@@ -1,0 +1,9 @@
+{% if contact_list %}
+    <ul>
+    {% for contact in contact_list %}
+        <li><a href="{%url 'agenda:detail' contact.id%}">{{contact.first_name}} {{contact.last_name}}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay contactos disponibles.</p>
+{% endif %}
