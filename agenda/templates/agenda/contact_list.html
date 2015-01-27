@@ -1,0 +1,19 @@
+{% if contact_list %}
+<table border="1" width="300px" align="center">
+	<tr><td align="right"><a href="/agenda/create">Crear nuevo contacto</a></td></tr>
+	
+	{% for contact in contact_list %}
+		<tr>
+    		<td><a href="{%url 'agenda:detail' contact.id%}">{{contact.first_name}} {{contact.last_name}}</a></td>
+    		<td>
+    			<form action="{%url 'agenda:delete' contact.id%}" method="post">
+    				{% csrf_token %}
+    				<input type="submit" value="Delete"/>
+    			</form>
+    		</td>
+    	</tr>
+    {% endfor %}
+</table>   
+{% else %}
+    <p>No hay contactos disponibles.</p>
+{% endif %}

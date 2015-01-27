@@ -1,0 +1,19 @@
+<h4>Nombre Contacto: {{contact.first_name}} {{contact.last_name}}</h4>
+<h4>Empresa: {{contact.company_name}}</h4>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+{% if contact.localization_set.all %}
+Localizaciones Disponibles:
+{% else%}
+No se han registrado localizaciones para el contacto!
+{% endif%}
+
+<br>
+{% for localization in contact.localization_set.all %}
+    <input type="radio" name="localization" id="localization{{ forloop.counter }}" value="{{ localization.id }}" />
+    <label for="localization{{ forloop.counter }}">{{ localization.name }}</label><br />
+{% endfor %}
+<br>
+<a href="{%url 'agenda:update' contact.id%}">Actualizar Contacto</a> | 
+<a href="{%url 'agenda:list'%}">Volver</a>

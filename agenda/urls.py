@@ -5,7 +5,13 @@ from agenda import views
 
 urlpatterns = patterns('',
     # ex: /agenda/
-    url(r'^$', views.IndexView.as_view(), name='index'),
+    url(r'^$', views.ContactListView.as_view(), name='list'),
+    # ex: /agenda/create/
+    url(r'^create/$', views.ContactCreateView.as_view(), name='create'),
     # ex: /agenda/5/
-    url(r'^(?P<pk>\d+)/$', views.DetailView.as_view(), name='detail'),
+    url(r'^(?P<pk>\d+)/$', views.ContactDetailView.as_view(), name='detail'),
+    # ex: /agenda/1/update/
+    url(r'^(?P<pk>\d+)/update/$', views.ContactUpdateView.as_view(), name='update'),
+    # ex: /agenda/1/delete/
+    url(r'^(?P<pk>\d+)/delete/$', views.ContactDeleteView.as_view(), name='delete'),
 )

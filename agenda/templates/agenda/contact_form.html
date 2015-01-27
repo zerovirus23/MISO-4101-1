@@ -1,0 +1,10 @@
+<form action="" method="post">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<div>
+		<input type="submit" value="Guardar"/>
+		<input type="button" value="Cancelar" onClick="window.history.back()"/>
+	</div>
+</form>
+
+---> Por acá hace falta agregar la edición de las localizaciones!
