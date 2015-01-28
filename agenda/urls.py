@@ -14,4 +14,6 @@ urlpatterns = patterns('',
     url(r'^(?P<pk>\d+)/update/$', views.ContactUpdateView.as_view(), name='update'),
     # ex: /agenda/1/delete/
     url(r'^(?P<pk>\d+)/delete/$', views.ContactDeleteView.as_view(), name='delete'),
+    # ex: /agenda/sea/
+    url(r'^search/$', views.ContactSearchView.as_view(), name='search'),
 )

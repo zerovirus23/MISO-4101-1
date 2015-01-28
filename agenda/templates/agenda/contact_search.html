@@ -1,24 +1,20 @@
-{% extends "agenda/base.html" %}
- 
-{% block content %}
-
+----------------------------
 {% if contact_list %}
 <table border="1" width="400px" align="center">
 	<tr>
-		<td colspan="2" align="center"><h3>Agenda de Contactos</h3></td> 
-	</tr>
-	<tr>
-		<td colspan="2" align="center">
+		<td>
 			<form action="{%url 'agenda:search'%}" method="get">
 				<input type="text" name="contactFilter"/>
 				<input type="submit" value="Filtrar"/>
 			</form>
 		</td>
 	</tr>
+	<tr><td align="right"><a href="/agenda/create">Crear nuevo contacto</a></td></tr>
+	
 	{% for contact in contact_list %}
 		<tr>
-    		<td width="70%"><a href="{%url 'agenda:detail' contact.id%}">{{contact.first_name}} {{contact.last_name}}</a></td>
-    		<td align="center">
+    		<td><a href="{%url 'agenda:detail' contact.id%}">{{contact.first_name}} {{contact.last_name}}</a></td>
+    		<td>
     			<form action="{%url 'agenda:delete' contact.id%}" method="post">
     				{% csrf_token %}
     				<input type="submit" value="Delete"/>
@@ -26,14 +22,7 @@
     		</td>
     	</tr>
     {% endfor %}
-    <tr>
-    	<td align="right" colspan="2">
-			<a href="/agenda/create">Crear nuevo contacto</a>
-		</td>
-	</tr>
 </table>   
 {% else %}
     <p>No hay contactos disponibles.</p>
 {% endif %}
-
-{% endblock %}
