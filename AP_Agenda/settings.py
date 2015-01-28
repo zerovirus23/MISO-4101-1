@@ -60,10 +60,10 @@ WSGI_APPLICATION = 'AP_Agenda.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'agenda',
-        'USER': 'postgres',
-        'PASSWORD': '000000',
-        'HOST': '127.0.0.1',
+        'NAME': 'd1uv0esqp9fhvu',
+        'USER': 'daivtaqzxeakqk',
+        'PASSWORD': 'j8fDAauuOEckAVqTzJyYjAOb7F',
+        'HOST': 'ec2-107-21-118-56.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
