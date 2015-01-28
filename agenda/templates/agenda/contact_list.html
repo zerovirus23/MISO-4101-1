@@ -10,7 +10,7 @@
 	<tr>
 		<td colspan="2" align="center">
 			<form action="{%url 'agenda:search'%}" method="get">
-				<input type="text" name="contactFilter"/>
+				<input type="text" name="contactFilter" value="{{contactFilter}}"/>
 				<input type="submit" value="Filtrar"/>
 			</form>
 		</td>
@@ -21,7 +21,7 @@
     		<td align="center">
     			<form action="{%url 'agenda:delete' contact.id%}" method="post">
     				{% csrf_token %}
-    				<input type="submit" value="Delete"/>
+    				<input type="submit" value="Eliminar"/>
     			</form>
     		</td>
     	</tr>
@@ -33,7 +33,9 @@
 	</tr>
 </table>   
 {% else %}
+<div align="center">
     <p>No hay contactos disponibles.</p>
+</div>
 {% endif %}
 
 {% endblock %}

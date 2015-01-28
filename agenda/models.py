@@ -21,8 +21,8 @@ class Localization(models.Model):
     address2 = models.CharField(max_length=100)
     email1 = models.EmailField(max_length=254)
     email2 = models.EmailField(max_length=254)
-    contact = models.ForeignKey(Contact) 
+    contact = models.ForeignKey(Contact)
     
     #Representación como cadena del objeto
     def __str__(self):
-        return self.name + ' - ' + self.phone1 + ' - ' + self.address1 + ' - ' + self.email1 
+        return self.name + ' - ' + self.phone1 + ' - ' + self.address1 + ' - ' + self.email1
