@@ -1,0 +1,44 @@
+{% extends "agenda/base.html" %}
+ 
+{% block content %}
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<table align="center">
+	<tr>
+		<td align="center" colspan="2">
+			<h2>Información de contacto</h2>
+		</td>
+	</tr>
+	<tr>
+		<td><b>Nombre:</b></td>
+		<td>{{contact.first_name}}</td>
+	</tr>
+	<tr>
+		<td><b>Apellido:</b></td>
+		<td>{{contact.last_name}}</td>
+	</tr>
+	<tr>
+		<td><b>Empresa:</b></td>
+		<td>{{contact.company_name}}</td>
+	</tr>
+</table>
+<br>
+<br>
+<div align="center">
+<a href="{%url 'agenda:update' contact.id%}">Actualizar Contacto</a> | 
+<a href="{%url 'agenda:list'%}">Volver</a>
+<br><br>
+{% if contact.localization_set.all %}
+	<h3>Localizaciones Disponibles</h3>
+	
+{% else%}
+	<h3>No se han registrado localizaciones para el contacto!</h3>
+{% endif%}
+<br>
+{% for localization in contact.localization_set.all %}
+	{{ forloop.counter }}. {{ localization.name }}
+{% endfor %}
+</div>
+
+{% endblock %}
