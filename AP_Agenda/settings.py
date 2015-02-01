@@ -88,10 +88,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
-STATIC_URL = '/tmp/'
+STATIC_URL = '/app/static/'
 #os.path.join('http://desa-1.herokuapp.com',BASE_DIR, 'static/')
 #STATIC_ROOT = '/static/'
-STATIC_ROOT = '/tmp/'
+STATIC_ROOT = '/static/'
 
 STATICFILES_DIRS = (
     os.path.join('http://desa-1.herokuapp.com',BASE_DIR, 'static/'),
