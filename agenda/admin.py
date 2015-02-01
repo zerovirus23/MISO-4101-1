@@ -15,5 +15,4 @@ class ContactAdmin(admin.ModelAdmin):
     search_fields = ['first_name', 'last_name']
     
 # Register your models here.
-# Register your models here.
 admin.site.register(Contact, ContactAdmin)
