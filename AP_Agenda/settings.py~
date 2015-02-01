@@ -91,7 +91,7 @@ USE_TZ = True
 STATIC_URL = '/tmp/'
 #os.path.join('http://desa-1.herokuapp.com',BASE_DIR, 'static/')
 #STATIC_ROOT = '/static/'
-STATIC_ROOT = 'tmp/'
+STATIC_ROOT = '/tmp/'
 
 STATICFILES_DIRS = (
     os.path.join('http://desa-1.herokuapp.com',BASE_DIR, 'static/'),

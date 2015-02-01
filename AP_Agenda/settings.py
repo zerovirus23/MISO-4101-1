@@ -95,7 +95,6 @@ STATIC_ROOT = '/tmp/'
 
 STATICFILES_DIRS = (
     os.path.join('http://desa-1.herokuapp.com',BASE_DIR, 'static/'),
-'/tmp/',
 )
 
 #Custome template folder
