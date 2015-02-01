@@ -1,4 +1,4 @@
-from django.contrib import admin
+#from django.contrib import admin
 from agenda.models import Contact, Localization
 
 class LocalizationInLine(admin.TabularInline):
@@ -14,6 +14,5 @@ class ContactAdmin(admin.ModelAdmin):
     inlines = [LocalizationInLine]
     search_fields = ['first_name', 'last_name']
     
-# Register your models here.
 # Register your models here.
 admin.site.register(Contact, ContactAdmin)

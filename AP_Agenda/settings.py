@@ -49,6 +49,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+
 ROOT_URLCONF = 'AP_Agenda.urls'
 
 WSGI_APPLICATION = 'AP_Agenda.wsgi.application'
@@ -60,10 +61,10 @@ WSGI_APPLICATION = 'AP_Agenda.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd18d3kpev5tfbk',
-        'USER': 'haaxafdffgqzfl',
-        'PASSWORD': 'hIhCZhJhZ4-Nh6jZi4jwp8m94p',
-        'HOST': 'ec2-54-83-9-127.compute-1.amazonaws.com',
+        'NAME': 'd5snf1vtia97an',
+        'USER': 'rmwbyxiytiwdzq',
+        'PASSWORD': 'RMxz34GI7yhQV0Cxs_ayf3dMD9',
+        'HOST': 'ec2-54-83-205-46.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
