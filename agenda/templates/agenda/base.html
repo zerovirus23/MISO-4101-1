@@ -40,8 +40,12 @@
 	            {% block welcome-msg %}
 	                {% trans 'Bienvenido,' %}
 	                <strong>{% firstof user.get_short_name user.get_username %}</strong>.
+	                <strong>
+	                	<a href="/logout">Salir</a>
+	                </strong>.
 	            {% endblock %}
 	        </div>
+	        
 	        {% endif %}
 	        {% block nav-global %}{% endblock %}
 	    </div>

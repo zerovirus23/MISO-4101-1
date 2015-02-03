@@ -6,7 +6,6 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.db.models import Q
 
 #Clases que gestiona CRUD+L de Contactos
-
 class ContactListView(ListView):
     context_object_name = 'contact_list' 
     
