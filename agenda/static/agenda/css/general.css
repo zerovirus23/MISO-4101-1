@@ -4,6 +4,16 @@
 #ger-info-user {
 	text-align: right;
 }
-#ger-header {
-	margin: 1em
+#ger-header-container{
+	background-color: #DDCCAA;
+	padding: 1em;
 }
+#ger-header {
+	
+}
+
+#ger-header-title{
+	text-align: center;
+}
+
+

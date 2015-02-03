@@ -24,23 +24,28 @@
 
     {% if not is_popup %}
     <!-- Header -->
-    <div id="ger-header" class="pure-g">
-        <div class="pure-u-1">
-        {% block branding %}{% endblock %}
-        </div>
-        {% if user.is_active and user.is_staff %}
-        <div class="pure-u-1-8">
-        	<img class="ger-img" src="{% static "agenda/img/logo.png" %}"></img>
-        </div>
-        <div id="ger-info-user" class="pure-u-7-8">
-            {% block welcome-msg %}
-                {% trans 'Welcome,' %}
-                <strong>{% firstof user.get_short_name user.get_username %}</strong>.
-            {% endblock %}
-        </div>
-        {% endif %}
-        {% block nav-global %}{% endblock %}
-    </div>
+    <div id="ger-header-container">
+	    <div id="ger-header" class="pure-g">
+	        <div class="pure-u-1">
+	        {% block branding %}{% endblock %}
+	        </div>
+	        {% if user.is_active and user.is_staff %}
+	        <div class="pure-u-1-8">
+	        	<img class="ger-img" src="{% static "agenda/img/logo.png" %}"></img>
+	        </div>
+	        <div class="pure-u-3-4">
+	        	<h1 id="ger-header-title">Mi agenda feliz</h1>
+	        </div>
+	        <div id="ger-info-user" class="pure-u-1-8">
+	            {% block welcome-msg %}
+	                {% trans 'Bienvenido,' %}
+	                <strong>{% firstof user.get_short_name user.get_username %}</strong>.
+	            {% endblock %}
+	        </div>
+	        {% endif %}
+	        {% block nav-global %}{% endblock %}
+	    </div>
+	</div>
     <!-- END Header -->
     {% block breadcrumbs %}
     <div class="breadcrumbs">
