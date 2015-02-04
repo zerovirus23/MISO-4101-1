@@ -1,4 +1,4 @@
-from django.contrib import admin
+#from django.contrib import admin
 from agenda.models import Contact, Localization
 
 class LocalizationInLine(admin.TabularInline):
