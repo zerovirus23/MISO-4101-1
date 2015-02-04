@@ -1,0 +1,49 @@
+{% extends "agenda/base.html" %}
+ 
+{% block content %}
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<table align="center">
+	<tr>
+		<td align="center" colspan="2">
+			<h2>Información de Localización</h2>
+		</td>
+	</tr>
+	<tr>
+		<td><b>Nombre:</b></td>
+		<td>{{localization.name}}</td>
+	</tr>
+	<tr>
+		<td><b>Teléfono 1:</b></td>
+		<td>{{localization.phone1}}</td>
+	</tr>
+	<tr>
+		<td><b>Teléfono 2:</b></td>
+		<td>{{localization.phone2}}</td>
+	</tr>
+	<tr>
+		<td><b>Dirección 1:</b></td>
+		<td>{{localization.address1}}</td>
+	</tr>
+	<tr>
+		<td><b>Dirección 2:</b></td>
+		<td>{{localization.address2}}</td>
+	</tr>
+	<tr>
+		<td><b>Email 1:</b></td>
+		<td>{{localization.email1}}</td>
+	</tr>
+	<tr>
+		<td><b>Email 1:</b></td>
+		<td>{{localization.email2}}</td>
+	</tr>
+</table>
+<br>
+<br>
+<div align="center">
+<a href="{%url 'agenda:localization_update' localization.id%}">Actualizar Localización</a> | 
+<a href="{%url 'agenda:localization_list'%}">Volver</a>
+</div>
+
+{% endblock %}

@@ -40,9 +40,6 @@
 	            {% block welcome-msg %}
 	                {% trans 'Bienvenido,' %}
 	                <strong>{% firstof user.get_short_name user.get_username %}</strong>.
-	                <strong>
-	                	<a href="/logout">Salir</a>
-	                </strong>.
 	            {% endblock %}
 	        </div>
 	        
@@ -68,6 +65,9 @@
     {% endblock messages %}
 
     <!-- Content -->
+    <div align="right">
+    	<a href="/logout">Salir</a>
+    </div>
     <div id="content" class="{% block coltype %}colM{% endblock %}">
         {% block pretitle %}{% endblock %}
         {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}

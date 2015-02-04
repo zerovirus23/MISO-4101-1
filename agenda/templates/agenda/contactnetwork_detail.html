@@ -1,0 +1,29 @@
+{% extends "agenda/base.html" %}
+ 
+{% block content %}
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<table align="center">
+	<tr>
+		<td align="center" colspan="2">
+			<h2>Información de Red Social</h2>
+		</td>
+	</tr>
+	<tr>
+		<td><b>Nombre:</b></td>
+		<td>{{network.name}}</td>
+	</tr>
+	<tr>
+		<td><b>Username:</b></td>
+		<td>{{network.username}}</td>
+	</tr>
+</table>
+<br>
+<br>
+<div align="center">
+<a href="{%url 'agenda:network_update' network.id%}">Actualizar Red</a> | 
+<a href="{%url 'agenda:network_list'%}">Volver</a>
+</div>
+
+{% endblock %}

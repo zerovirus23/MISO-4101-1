@@ -1,0 +1,47 @@
+{% extends "agenda/base.html" %}
+ 
+{% block content %}
+
+<div class="pure-u-1">
+	<a class="pure-button pure-button-primary" href="{%url 'agenda:network_create'%}">Crear nueva red</a>
+</div>
+
+{% if network_list %}
+<div class="pure-g">
+	<div class="pure-u-1">
+		<h3>Redes Sociales</h3>
+	</div>
+
+	<div class="pure-u-1">
+		<table class="pure-table">
+			<tr>
+				<td>Tipo Red</td>
+				<td>Usuario</td>
+				<td>Opciones</td>
+			</tr>
+			{% for network in network_list %}
+				<tr>
+		    		<td>
+		    			<a href="{%url 'agenda:network_detail' network.id%}">{{network.name}}</a>
+		    		</td>
+		    		<td>
+		    			{{network.username}}
+		    		</td>
+		    		<td align="center">
+		    			<form action="{%url 'agenda:network_delete' network.id%}" method="post">
+		    				{% csrf_token %}
+		    				<button type="submit">Eliminar</button>
+		    			</form>
+		    		</td>
+		    	</tr>
+		    {% endfor %}
+		</table>
+	</div>
+</div>
+{% else %}
+<div align="center">
+    <p>No hay redes disponibles</p>
+</div>
+{% endif %}
+<a href="{%url 'agenda:contact_list'%}">Volver a Contactos</a>
+{% endblock %}

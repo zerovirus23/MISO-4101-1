@@ -1,0 +1,27 @@
+{% extends "agenda/base.html" %}
+ 
+{% block content %}
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<table align="center">
+	<tr>
+		<td align="center" colspan="2">
+			<h2>Información de la agenda</h2>
+		</td>
+	</tr>
+	<tr>
+		<td><b>Nombre:</b></td>
+		<td>{{agenda.name}}</td>
+	</tr>
+</table>
+<br>
+<br>
+<div align="center">
+<a href="{%url 'agenda:agenda_update' agenda.id%}">Actualizar Agenda</a> | 
+<a href="{%url 'agenda:agenda_list'%}">Volver</a>
+<br><br>
+
+</div>
+
+{% endblock %}

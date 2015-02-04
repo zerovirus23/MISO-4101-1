@@ -1,0 +1,55 @@
+{% extends "agenda/base.html" %}
+ 
+{% block content %}
+
+<div class="pure-u-1">
+	<a class="pure-button pure-button-primary" href="{%url 'agenda:localization_create'%}">Crear nueva localización</a>
+</div>
+
+{% if localization_list %}
+<div class="pure-g">
+	<div class="pure-u-1">
+		<h3>Localizaciones</h3>
+	</div>
+
+	<div class="pure-u-1">
+		<table class="pure-table">
+			<tr>
+				<td>Nombre</td>
+				<td>Teléfono</td>
+				<td>Dirección</td>
+				<td>Email</td>
+				<td>Opciones</td>
+			</tr>
+			{% for localization in localization_list %}
+				<tr>
+		    		<td>
+		    			<a href="{%url 'agenda:localization_detail' localization.id%}">{{localization.name}}</a>
+		    		</td>
+		    		<td>
+		    			{{localization.phone1}}
+		    		</td>
+		    		<td>
+		    			{{localization.address1}}
+		    		</td>
+		    		<td>
+		    			{{localization.email1}}
+		    		</td>
+		    		<td align="center">
+		    			<form action="{%url 'agenda:localization_delete' localization.id%}" method="post">
+		    				{% csrf_token %}
+		    				<button type="submit">Eliminar</button>
+		    			</form>
+		    		</td>
+		    	</tr>
+		    {% endfor %}
+		</table>
+	</div>
+</div>
+{% else %}
+<div align="center">
+    <p>No hay localizaciones disponibles</p>
+</div>
+{% endif %}
+<a href="{%url 'agenda:contact_list'%}">Volver a Contactos</a>
+{% endblock %}

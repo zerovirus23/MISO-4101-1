@@ -26,19 +26,8 @@
 <br>
 <br>
 <div align="center">
-<a href="{%url 'agenda:update' contact.id%}">Actualizar Contacto</a> | 
-<a href="{%url 'agenda:list'%}">Volver</a>
-<br><br>
-{% if contact.localization_set.all %}
-	<h3>Localizaciones Disponibles</h3>
-	
-{% else%}
-	<h3>No se han registrado localizaciones para el contacto!</h3>
-{% endif%}
-<br>
-{% for localization in contact.localization_set.all %}
-	{{ forloop.counter }}. {{ localization.name }}
-{% endfor %}
+<a href="{%url 'agenda:contact_update' contact.id%}">Actualizar Contacto</a> | 
+<a href="{%url 'agenda:contact_list'%}">Volver</a>
 </div>
 
 {% endblock %}

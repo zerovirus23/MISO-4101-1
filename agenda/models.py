@@ -1,10 +1,20 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Modelo de datos
+class Agenda(models.Model):
+    name = models.CharField(max_length=50)
+    user = models.ForeignKey(User)
+    
+    #Representación como cadena del objeto
+    def __str__(self):
+        return self.name
+    
 class Contact(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     company_name = models.CharField(max_length=200)
+    agenda = models.ForeignKey(Agenda)
     
     class Meta:
         ordering = ['first_name', 'last_name']
@@ -12,6 +22,11 @@ class Contact(models.Model):
     #Representación como cadena del objeto
     def __str__(self):
         return self.first_name + ' ' + self.last_name
+    
+class ContactNetwork(models.Model):
+    name = models.CharField(max_length=50)
+    username = models.CharField(max_length=255)
+    contact = models.ForeignKey(Contact)
     
 class Localization(models.Model):
     name = models.CharField(max_length=200)

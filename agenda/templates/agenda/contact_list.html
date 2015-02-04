@@ -5,12 +5,12 @@
 {% if contact_list %}
 <div class="pure-g">
 	<div class="pure-u-1">
-		<a class="pure-button pure-button-primary" href="/agenda/create">Crear nuevo contacto</a>
+		<a class="pure-button pure-button-primary" href="{%url 'agenda:contact_create'%}">Crear nuevo contacto</a>
 	</div>
 
 	<div class="pure-u-1">
 		<h3>Agenda de Contactos</h3>
-		<form class="pure-form" action="{%url 'agenda:search'%}" method="get">
+		<form class="pure-form" action="{%url 'agenda:contact_search'%}" method="get">
 			<input type="text" placeholder="Buscar contacto" name="contactFilter" value="{{contactFilter}}"/>
 			<button class="pure-button pure-button-primary" type="submit">Filtrar</Button>
 		</form>
@@ -21,10 +21,19 @@
 			{% for contact in contact_list %}
 				<tr>
 		    		<td>
-		    			<a href="{%url 'agenda:detail' contact.id%}">{{contact.first_name}} {{contact.last_name}}</a>
+		    			<a href="{%url 'agenda:contact_detail' contact.id%}">{{contact.first_name}} {{contact.last_name}}</a>
 		    		</td>
 		    		<td align="center">
-		    			<form action="{%url 'agenda:delete' contact.id%}" method="post">
+		    			<form action="{%url 'agenda:localization_list'%}" method="get">
+		    				{% csrf_token %}
+		    				<button type="submit">Localizaciones</button>
+		    			</form>
+		    			<form action="{%url 'agenda:network_list'%}" method="get">
+		    				{% csrf_token %}
+		    				<input type="hidden" name="contact_id" value="{{contact.id}}"/>
+		    				<button type="submit">Redes Sociales</button>
+		    			</form>
+		    			<form action="{%url 'agenda:contact_delete' contact.id%}" method="post">
 		    				{% csrf_token %}
 		    				<button type="submit">Eliminar</button>
 		    			</form>
@@ -39,5 +48,5 @@
     <p>No hay contactos disponibles.</p>
 </div>
 {% endif %}
-
+<a href="{%url 'agenda:agenda_list'%}">Volver a Agendas</a>
 {% endblock %}
