@@ -91,10 +91,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 #os.path.join('http://desa-1.herokuapp.com',BASE_DIR, 'static/')
 #STATIC_ROOT = '/static/'
-STATIC_ROOT = 'new/'
+STATIC_ROOT = 'static/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR,'templates/'),
+    os.path.join(BASE_DIR,'static/'),
 )
 
 #Custome template folder
