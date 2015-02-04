@@ -4,16 +4,21 @@
 #ger-info-user {
 	text-align: right;
 }
-#ger-header-container{
-	background-color: #DDCCAA;
+#ger-header-container, #ger-footer-container{
+	background-color: #EE955E;
 	padding: 1em;
 }
-#ger-header {
-	
+#ger-content-container{
+	min-height: 45em;
+	padding: 1em;
+	background-color: #E5E5E5;
 }
 
 #ger-header-title{
 	text-align: center;
+}
+.ger-table{
+	background: #FFFFFF;
 }
 
 
