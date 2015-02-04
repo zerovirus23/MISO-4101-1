@@ -94,7 +94,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = 'new/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static/'),
+    os.path.join('static/'),
 )
 
 #Custome template folder
