@@ -65,22 +65,39 @@
     {% endblock messages %}
 
     <!-- Content -->
-    <div align="right">
+	<div align="right">
     	<a href="/logout">Salir</a>
     </div>
-    <div id="content" class="{% block coltype %}colM{% endblock %}">
-        {% block pretitle %}{% endblock %}
-        {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
-        {% block content %}
-        {% block object-tools %}{% endblock %}
-        {{ content }}
-        {% endblock %}
-        {% block sidebar %}{% endblock %}
-        <br class="clear" />
+    <div id="ger-content-container" class="{% block coltype %}colM{% endblock %}">
+    	<div id="ger-content">
+	        {% block pretitle %}{% endblock %}
+	        {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
+	        {% block content %}
+	        {% block object-tools %}{% endblock %}
+	        {{ content }}
+	        {% endblock %}
+	        {% block sidebar %}{% endblock %}
+	        <br class="clear" />
+		</div>
     </div>
     <!-- END Content -->
-
-    {% block footer %}<div id="footer"></div>{% endblock %}
+	 <div class="breadcrumbs"></div>
+    {% block footer %}
+    	<div id="ger-footer-container">
+    		<div id="ger-footer" class="pure-g">
+    			<div class="pure-u-1-2">
+    				<span>Jhony Mauricio Toro Echeverria</span></br>
+    				<span>Hernán Darío Tenjo Mateus</span></br>
+    				<span>Germán David Medina Niño</span></br>
+    				<span>Germán Leonardo Rojas Muñoz</span></br>
+    				<span>Juvenal Elias Barrios</span></br>
+    			</div>
+    			<div class="pure-u-1-2">
+    				
+    			</div>
+    		</div>
+    	</div>
+    {% endblock %}
 </div>
 <!-- END Container -->
 

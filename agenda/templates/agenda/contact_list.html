@@ -26,6 +26,7 @@
 		    		<td align="center">
 		    			<form action="{%url 'agenda:localization_list'%}" method="get">
 		    				{% csrf_token %}
+		    				<input type="hidden" name="contact_id" value="{{contact.id}}"/>
 		    				<button type="submit">Localizaciones</button>
 		    			</form>
 		    			<form action="{%url 'agenda:network_list'%}" method="get">
