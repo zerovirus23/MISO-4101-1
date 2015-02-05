@@ -2,11 +2,11 @@
  
 {% block content %}
 
+<div class="pure-u-1">
+	<a class="pure-button pure-button-primary" href="{%url 'agenda:contact_create'%}">Crear nuevo contacto</a>
+</div>
 {% if contact_list %}
 <div class="pure-g">
-	<div class="pure-u-1">
-		<a class="pure-button pure-button-primary" href="{%url 'agenda:contact_create'%}">Crear nuevo contacto</a>
-	</div>
 
 	<div class="pure-u-1">
 		<h3>Agenda de Contactos</h3>
