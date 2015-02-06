@@ -18,7 +18,12 @@ class AgendaListView(ListView):
         
 class AgendaCreateView(CreateView):
     model = Agenda
+    fields = ['name']
     success_url = '/agenda/'
+    
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(AgendaCreateView, self).form_valid(form)
 
 class AgendaDetailView(DetailView):
     model = Agenda
@@ -56,7 +61,13 @@ class ContactListView(ListView):
         
 class ContactCreateView(CreateView):
     model = Contact
+    fields = ['first_name', 'last_name', 'company_name']
     success_url = '/agenda/contact'
+
+    def form_valid(self, form):
+        agenda_id = self.request.session['agenda_id']
+        form.instance.agenda = Agenda.objects.get(pk=agenda_id)
+        return super(ContactCreateView, self).form_valid(form)
 
 class ContactDetailView(DetailView):
     model = Contact
@@ -105,7 +116,13 @@ class NetworkListView(ListView):
         
 class NetworkCreateView(CreateView):
     model = ContactNetwork
+    fields = ['username', 'name']
     success_url = '/agenda/contact/network'
+    
+    def form_valid(self, form):
+        contact_id = self.request.session['contact_id']
+        form.instance.contact = Contact.objects.get(pk=contact_id)
+        return super(NetworkCreateView, self).form_valid(form)
 
 class NetworkDetailView(DetailView):
     context_object_name = 'network'
@@ -144,7 +161,13 @@ class LocalizationListView(ListView):
         
 class LocalizationCreateView(CreateView):
     model = Localization
+    fields = ['name','phone1','phone2','address1','address2','email1','email2']
     success_url = '/agenda/contact/localization'
+    
+    def form_valid(self, form):
+        contact_id = self.request.session['contact_id']
+        form.instance.contact = Contact.objects.get(pk=contact_id)
+        return super(LocalizationCreateView, self).form_valid(form)
 
 class LocalizationDetailView(DetailView):
     context_object_name = 'localization'
