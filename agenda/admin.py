@@ -26,4 +26,6 @@ class AgendaAdmin(admin.ModelAdmin):
 admin.site.register(Agenda)
 admin.site.register(Contact)
 admin.site.register(Localization)
+admin.site.register(ContactNetwork)
+
 

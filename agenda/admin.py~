@@ -21,12 +21,9 @@ class AgendaAdmin(admin.ModelAdmin):
     search_fields = ['name']
 '''
 # Register your models here.
-<<<<<<< HEAD
 #admin.site.register(Contact, ContactAdmin)
 #admin.site.register(Agenda, AgendaAdmin)
 admin.site.register(Agenda)
 admin.site.register(Contact)
 admin.site.register(Localization)
-=======
-admin.site.register(Contact, ContactAdmin)
->>>>>>> 849ab7d1e549b55ee5b67c681e7c6e1e9f870f93
+
