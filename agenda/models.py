@@ -10,6 +10,14 @@ class Agenda(models.Model):
     def __str__(self):
         return self.name
     
+class Grupo(models.Model):
+    name = models.CharField(max_length=50)
+    user = models.ForeignKey(User)
+    
+    #Representación como cadena del objeto
+    def __str__(self):
+        return self.name
+    
 class Contact(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)

@@ -1,7 +1,7 @@
 from django.shortcuts import render#, get_object_or_404
 #from django.http import HttpResponse
 from django.core.urlresolvers import reverse
-from agenda.models import Agenda, Contact, ContactNetwork, Localization
+from agenda.models import Agenda, Contact, Grupo, ContactNetwork, Localization
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.db.models import Q
 from django.shortcuts import redirect
@@ -37,6 +37,34 @@ class AgendaUpdateView(UpdateView):
 class AgendaDeleteView(DeleteView):
     model = Agenda
     success_url = '/agenda/'
+#==========================================================
+#Clases que gestiona CRUD+L de Grupo
+#==========================================================
+class GrupoListView(ListView):
+    context_object_name = 'grupo_list' 
+    
+    def get_queryset(self):
+        user = self.request.user;
+        return Grupo.objects.all().filter(user_id = user.id)
+        
+class GrupoCreateView(CreateView):
+    model = Grupo
+    fields = ['name']
+    success_url = '/agenda/grupo/'
+    
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(GrupoCreateView, self).form_valid(form)
+
+class GrupoDetailView(DetailView):
+    model = Grupo
+    
+class GrupoUpdateView(UpdateView):
+    model = Grupo
+    
+    def get_success_url(self):
+        return reverse('agenda:grupo_detail', kwargs={'pk': self.object.pk,})
+    
     
 #==========================================================
 #Clases que gestiona CRUD+L de Contactos

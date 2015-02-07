@@ -1,0 +1,38 @@
+{% extends "agenda/base.html" %}
+ 
+{% block content %}
+
+<div class="pure-u-1">
+	<a class="pure-button pure-button-primary" href="/agenda/grupo/create">Crear nuevo grupo</a>
+</div>
+{% if grupo_list %}
+<div class="pure-g">
+	<div class="pure-u-1">
+		<h3>Grupos Disponibles</h3>
+	</div>
+
+	<div class="pure-u-1">
+		<table class="pure-table">
+			{% for grupo in grupo_list %}
+				<tr>
+		    		<td>
+		    			<a href="{%url 'agenda:grupo_detail' grupo.id%}">{{grupo.name}}</a>
+		    		</td>
+		    		<td>
+		    			
+		    		</td>
+		    		<td align="center">
+		    			
+		    		</td>
+		    	</tr>
+		    {% endfor %}
+		</table>
+	</div>
+</div>
+{% else %}
+<div align="center">
+    <p>No eres miembro de ningún grupo.</p>
+</div>
+{% endif %}
+
+{% endblock %}
