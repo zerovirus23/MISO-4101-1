@@ -12,6 +12,18 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+	migrations.CreateModel(
+            name='ContactNetwork',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', auto_created=True, primary_key=True, serialize=False)),
+                ('name', models.CharField(max_length=50)),
+                ('username', models.CharField(max_length=255)),
+                ('contact', models.ForeignKey(to='agenda.Contact')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
 
         migrations.CreateModel(
             name='Agenda',

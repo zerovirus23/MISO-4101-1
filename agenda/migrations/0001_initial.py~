@@ -12,6 +12,7 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+
         migrations.CreateModel(
             name='Agenda',
             fields=[
@@ -53,5 +54,7 @@ class Migration(migrations.Migration):
             options={
             },
             bases=(models.Model,),
+
         ),
+
     ]
