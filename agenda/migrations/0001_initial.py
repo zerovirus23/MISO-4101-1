@@ -12,23 +12,10 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-	migrations.CreateModel(
-            name='ContactNetwork',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', auto_created=True, primary_key=True, serialize=False)),
-                ('name', models.CharField(max_length=50)),
-                ('username', models.CharField(max_length=255)),
-                ('contact', models.ForeignKey(to='agenda.Contact')),
-            ],
-            options={
-            },
-            bases=(models.Model,),
-        ),
-
         migrations.CreateModel(
             name='Agenda',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', primary_key=True, serialize=False, auto_created=True)),
+                ('id', models.AutoField(auto_created=True, primary_key=True, verbose_name='ID', serialize=False)),
                 ('name', models.CharField(max_length=50)),
                 ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
             ],
@@ -39,7 +26,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Contact',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', primary_key=True, serialize=False, auto_created=True)),
+                ('id', models.AutoField(auto_created=True, primary_key=True, verbose_name='ID', serialize=False)),
                 ('first_name', models.CharField(max_length=50)),
                 ('last_name', models.CharField(max_length=50)),
                 ('company_name', models.CharField(max_length=200)),
@@ -51,9 +38,21 @@ class Migration(migrations.Migration):
             bases=(models.Model,),
         ),
         migrations.CreateModel(
+            name='ContactNetwork',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, verbose_name='ID', serialize=False)),
+                ('name', models.CharField(max_length=50)),
+                ('username', models.CharField(max_length=255)),
+                ('contact', models.ForeignKey(to='agenda.Contact')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
             name='Localization',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', primary_key=True, serialize=False, auto_created=True)),
+                ('id', models.AutoField(auto_created=True, primary_key=True, verbose_name='ID', serialize=False)),
                 ('name', models.CharField(max_length=200)),
                 ('phone1', models.CharField(max_length=20)),
                 ('phone2', models.CharField(max_length=20)),
@@ -66,7 +65,5 @@ class Migration(migrations.Migration):
             options={
             },
             bases=(models.Model,),
-
         ),
-
     ]
