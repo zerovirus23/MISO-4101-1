@@ -15,7 +15,7 @@ class Grupo(models.Model):
 class Agenda(models.Model):
     name = models.CharField(max_length=50)
     user = models.ForeignKey(User)
-    type = models.IntegerField(choices=((1, 'Pública'), (2, 'Privada')))
+    type = models.IntegerField(choices=((1, 'Pública'), (2, 'Privada')), default=2)
     
     grupo = models.ForeignKey(Grupo, blank=True, null=True)
     #Representación como cadena del objeto
