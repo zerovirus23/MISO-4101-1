@@ -15,16 +15,25 @@ class AgendaListView(ListView):
     def get_queryset(self):
         user = self.request.user;
         return Agenda.objects.all().filter(user_id = user.id)
-        
+
+class AgendaListPublicView(ListView):
+    context_object_name = 'agenda_list' 
+    
+    def get_queryset(self):
+        return Agenda.objects.all().filter(type = 1) #El 1 es para agendas públicas
+    
+
 class AgendaCreateView(CreateView):
     model = Agenda
-    fields = ['name']
+    fields = ['name', 'type', 'grupo']
     success_url = '/agenda/'
     
+    
     def form_valid(self, form):
+        user = self.request.user
+        #form.instance.grupo.queryset = Grupo.objects.filter(users__id = user.id)
         form.instance.user = self.request.user
         return super(AgendaCreateView, self).form_valid(form)
-
 class AgendaDetailView(DetailView):
     model = Agenda
     
@@ -44,12 +53,30 @@ class GrupoListView(ListView):
     context_object_name = 'grupo_list' 
     
     def get_queryset(self):
-        user = self.request.user;
-        return Grupo.objects.all().filter(user_id = user.id)
+        user = self.request.user
+        return Grupo.objects.filter(users__id = user.id)
+
+class AgendaGrupoListView(ListView):
+    context_object_name = 'agenda_list' 
+    template_name = 'agenda/grupo_agenda_list.html'
+    def get(self, request, *args, **kwargs):
+        if ('grupo_id' in self.request.GET) or ('grupo_id' in self.request.session):
+            return super(AgendaGrupoListView, self).get(self, request, *args, **kwargs);
+        else:
+            return redirect('/agenda/grupo')
+    def get_queryset(self):
+        if 'grupo_id' in self.request.GET:
+            grupo_param_id = self.request.GET['grupo_id']
+            self.request.session['grupo_id'] = grupo_param_id
+        elif 'grupo_id' in self.request.session:
+            grupo_param_id = self.request.session['grupo_id']
+        
+        return Agenda.objects.filter(grupo__id = grupo_param_id)
+    
         
 class GrupoCreateView(CreateView):
     model = Grupo
-    fields = ['name']
+    fields = ['name', 'users']
     success_url = '/agenda/grupo/'
     
     def form_valid(self, form):

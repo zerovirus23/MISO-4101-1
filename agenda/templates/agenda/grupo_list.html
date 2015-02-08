@@ -19,10 +19,14 @@
 		    			<a href="{%url 'agenda:grupo_detail' grupo.id%}">{{grupo.name}}</a>
 		    		</td>
 		    		<td>
-		    			
+		    			<a href="{%url 'agenda:grupo_update' grupo.id%}">Actualizar</a>
 		    		</td>
 		    		<td align="center">
-		    			
+		    			<form action="{%url 'agenda:grupo_agenda_list' grupo.id%}" method="get">
+		    				{% csrf_token %}
+		    				<input type="hidden" name="grupo_id" value="{{grupo.id}}"/>
+		    				<button type="submit">Ver agendas</button>
+		    			</form>
 		    		</td>
 		    	</tr>
 		    {% endfor %}
