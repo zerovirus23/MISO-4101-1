@@ -5,6 +5,9 @@ from agenda.models import Agenda, Contact, ContactNetwork, Localization
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.db.models import Q
 from django.shortcuts import redirect
+from agenda.DB import  mytimer
+#from agenda.DB.mytimer import tempo
+
 
 #==========================================================
 #Clases que gestiona CRUD+L de Agenda
@@ -13,6 +16,8 @@ class AgendaListView(ListView):
     context_object_name = 'agenda_list' 
     
     def get_queryset(self):
+        t = mytimer.tempo()
+        t.iniciar()
         user = self.request.user;
         return Agenda.objects.all().filter(user_id = user.id)
         
@@ -20,12 +25,14 @@ class AgendaCreateView(CreateView):
     model = Agenda
     fields = ['name']
     success_url = '/agenda/'
-    
+
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(AgendaCreateView, self).form_valid(form)
 
 class AgendaDetailView(DetailView):
+    #t = mytimer.tempo()
+    #t.detener()
     model = Agenda
     
 class AgendaUpdateView(UpdateView):
@@ -51,6 +58,8 @@ class ContactListView(ListView):
             return redirect('/agenda')
         
     def get_queryset(self):
+        t = mytimer.tempo()
+        t.detener()
         if 'agenda_id' in self.request.GET:
             agenda_param_id = self.request.GET['agenda_id']
             self.request.session['agenda_id'] = agenda_param_id
@@ -60,6 +69,8 @@ class ContactListView(ListView):
         return Contact.objects.all().filter(agenda_id = agenda_param_id)
         
 class ContactCreateView(CreateView):
+    #t = mytimer.tempo()
+    #t.detener()
     model = Contact
     fields = ['first_name', 'last_name', 'company_name']
     success_url = '/agenda/contact'
@@ -67,6 +78,7 @@ class ContactCreateView(CreateView):
     def form_valid(self, form):
         agenda_id = self.request.session['agenda_id']
         form.instance.agenda = Agenda.objects.get(pk=agenda_id)
+        
         return super(ContactCreateView, self).form_valid(form)
 
 class ContactDetailView(DetailView):
@@ -142,6 +154,7 @@ class NetworkDeleteView(DeleteView):
 #Clases que gestiona CRUD+L de Localizaciones
 #==========================================================
 class LocalizationListView(ListView):
+    
     context_object_name = 'localization_list' 
     
     def get(self, request, *args, **kwargs):
@@ -182,3 +195,4 @@ class LocalizationUpdateView(UpdateView):
 class LocalizationDeleteView(DeleteView):
     model = Localization
     success_url = '/agenda/contact/localization'
+    

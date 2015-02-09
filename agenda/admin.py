@@ -1,5 +1,6 @@
+# -*- coding: utf-8 -*-
 from django.contrib import admin
-from agenda.models import Contact, Localization, Agenda
+from agenda.models import Contact, Localization, Agenda, ContactNetwork
 '''
 class LocalizationInLine(admin.TabularInline):
     model = Localization
@@ -26,5 +27,6 @@ class AgendaAdmin(admin.ModelAdmin):
 admin.site.register(Agenda)
 admin.site.register(Contact)
 admin.site.register(Localization)
+admin.site.register(ContactNetwork)
 
 
