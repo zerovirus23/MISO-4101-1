@@ -1,8 +1,8 @@
 {% load staticfiles %}{% load admin_static %}{% load firstof from future %}<!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
 <head>
-<title>{% block title %}{% endblock %}</title>
-<link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "agenda/css/base.css" %}{% endblock %}" />
+<title>{% block title %}Agenda Feliz{% endblock %}</title>
+<link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}" />
 {% block extrastyle %}{% endblock %}
 <!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="{% block stylesheet_ie %}{% static "agenda/css/ie.css" %}{% endblock %}" /><![endif]-->
 {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "agenda/css/rtl.css" %}{% endblock %}" />{% endif %}
@@ -11,91 +11,101 @@
 {% block extrahead %}{% endblock %}
 {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
 
-<!--Ger Magic ;)-->
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/pure/0.5.0/pure-min.css"/>
-<link rel="stylesheet" type="text/css" href="{% static "agenda/css/general.css" %}"/>
-</head>
-{% load i18n %}
+<!--David Magic ;)-->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!--<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/pure/0.5.0/pure-min.css"/> -->
+<link rel="stylesheet" type="text/css" href="{% static "agenda/css/bootstrap.min.css" %}"/>
+<link rel="stylesheet" type="text/css" href="{% static "agenda/css/cover.css" %}"/>
+</head>
+
+{% load i18n %}
 <body class="{% if is_popup %}popup {%	 endif %}{% block bodyclass %}{% endblock %}">
 
 <!-- Container -->
-<div id="ger-container">
+<div class="site-wrapper">
+{% if not is_popup %}
+      <div class="site-wrapper-inner">
+{% block branding %}{% endblock %}
+        <div class="cover-container">
+<!-- Header -->
+{% if user.is_active and user.is_staff %}
+          <div class="masthead clearfix">
+            <div class="inner">
 
-    {% if not is_popup %}
-    <!-- Header -->
-    <div id="ger-header-container">
-	    <div id="ger-header" class="pure-g">
-	        <div class="pure-u-1">
-	        {% block branding %}{% endblock %}
-	        </div>
-	        {% if user.is_active and user.is_staff %}
-	        <div class="pure-u-1-8">
-	        	<img class="ger-img" src="{% static "agenda/img/logo.png" %}"></img>
-	        </div>
-	        <div class="pure-u-3-4">
-	        	<h1 id="ger-header-title">Mi agenda feliz</h1>
-	        </div>
-	        <div id="ger-info-user" class="pure-u-1-8">
-	            {% block welcome-msg %}
+	      <img class="masthead-brand" src="{% static "agenda/img/agendaTrans2.png" %}"></img>
+
+		<h1>Agenda Feliz Uniandes </h1>
+
+		<nav>
+                <ul class="nav masthead-nav">
+                  <li class="active"><a href="#">Home</a></li>
+                  <li><a href="#">Features</a></li>
+                  <li><a href="#">Contact</a></li>
+		  <li> {% block welcome-msg %}
 	                {% trans 'Bienvenido,' %}
 	                <strong>{% firstof user.get_short_name user.get_username %}</strong>.
-	            {% endblock %}
-	        </div>
-	        {% endif %}
-	        {% block nav-global %}{% endblock %}
-	    </div>
-	</div>
-    <!-- END Header -->
-    {% block breadcrumbs %}
-    <div class="breadcrumbs">
-    
-    {% if title %} &rsaquo; {{ title }}{% endif %}
-    </div>
-    {% endblock %}
-    {% endif %}
+	            {% endblock %}</li>
+                </ul>
+                </nav>
+{% endif %}
+{% block nav-global %}{% endblock %}
+            </div>
+          </div>
 
-    {% block messages %}
-        {% if messages %}
-        <ul class="messagelist">{% for message in messages %}
-          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message|capfirst }}</li>
-        {% endfor %}</ul>
-        {% endif %}
-    {% endblock messages %}
+<!-- End Header -->
+{% block breadcrumbs %}
+{% if title %} &rsaquo; {{ title }}{% endif %}
+{% endblock %}
 
-    <!-- Content -->
-    <div id="ger-content-container" class="{% block coltype %}colM{% endblock %}">
-    	<div id="ger-content">
-	        {% block pretitle %}{% endblock %}
-	        {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
-	        {% block content %}
-	        {% block object-tools %}{% endblock %}
-	        {{ content }}
-	        {% endblock %}
-	        {% block sidebar %}{% endblock %}
-	        <br class="clear" />
-		</div>
+
+<!-- Content -->
+          <div class="inner cover">
+            {% if title %} &rsaquo; {{ title }}{% endif %}
+{% endif %}
+{% block messages %}
+{% if messages %}
+<ul class="list-group">{% for message in messages %}
+<li{% if message.tags %} class="{{ message.tags }} list-group-item"{% endif %}>{{ message|capfirst }}</li>
+{% endfor %}</ul>
+{% endif %}
+{% endblock messages %}
+
+{% block pretitle %}{% endblock %}
+{% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
+{% block content %}
+{% block object-tools %}{% endblock %}
+{{ content }}
+{% endblock %}
+{% block sidebar %}{% endblock %}
+          </div>
+<!-- End Content -->
+
+<!-- Footerer -->
+{% block footer %}
+          <div class="mastfoot">
+            <div class="inner">
+              <p>
+<b>Jhony Mauricio Toro Echeverria</b></br>
+<b>Hernán Darío Tenjo Mateus</b></br>
+<b>Germán David Medina Niño</b></br>
+<b>Germán Leonardo Rojas Muñoz</b></br>
+<b>Juvenal Elias Barrios</b></br>
+	      </p>
+            </div>
+          </div>
+{% endblock %}
+<!-- End Footer -->
+        </div>
+      </div>
     </div>
-    <!-- END Content -->
-	 <div class="breadcrumbs"></div>
-    {% block footer %}
-    	<div id="ger-footer-container">
-    		<div id="ger-footer" class="pure-g">
-    			<div class="pure-u-1-2">
-    				<b>Jhony Mauricio Toro Echeverria</b></br>
-    				<b>Hernán Darío Tenjo Mateus</b></br>
-    				<b>Germán David Medina Niño</b></br>
-    				<b>Germán Leonardo Rojas Muñoz</b></br>
-    				<b>Juvenal Elias Barrios</b></br>
-    			</div>
-    			<div class="pure-u-1-2">
-    				
-    			</div>
-    		</div>
-    	</div>
-    {% endblock %}
-</div>
 <!-- END Container -->
+
+<!--Bootstrap js  -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="{% static "agenda/js/bootstrap.min.js" %}"></script>
 
 </body>
 </html>

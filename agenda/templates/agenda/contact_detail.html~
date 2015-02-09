@@ -27,7 +27,7 @@
 <br>
 <div align="center">
 
-<a href="{%url 'agenda:contact_update' contact.id%}">Actualizar Contacto</a> | 
+<a class="pure-button pure-button-primary" href="{%url 'agenda:contact_update' contact.id%}">Actualizar Contacto</a> | 
 <a href="{%url 'agenda:contact_list'%}">Volver</a>
 </div>
 

@@ -37,7 +37,7 @@
 		    			</form>
 		    			<form action="{%url 'agenda:contact_delete' contact.id%}" method="post">
 		    				{% csrf_token %}
-		    				<button class="btn btn-link btn-xs" type="submit">Eliminar</button>
+		    				<button class="btn btn-default btn-xs" type="submit">Eliminar</button>
 		    			</form>
 		    		</td>
 		    	</tr>

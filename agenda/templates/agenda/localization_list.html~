@@ -47,5 +47,5 @@
     <h2>No hay localizaciones disponibles</h2>
 </div>
 {% endif %}
-<a class="btn btn-default" href="{%url 'agenda:contact_list'%}" role="button">Volver a Contactos</a>
+<a class="btn btn-primary" href="{%url 'agenda:contact_list'%}" role="button">Volver a Contactos</a>
 {% endblock %}

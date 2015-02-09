@@ -39,27 +39,27 @@ ROOT_URLCONF = 'AP_Agenda.urls'
 WSGI_APPLICATION = 'AP_Agenda.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-#DATABASES = {
-#        'default': {
-#                    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#                    'NAME': 'agenda',
-#                    'USER': 'postgres',
-#                    'PASSWORD': '000000',
-#                    'HOST': 'localhost',
-#                    'PORT': '5432',
-#                    }
-#}
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd5snf1vtia97an',
-        'USER': 'rmwbyxiytiwdzq',
-        'PASSWORD': 'RMxz34GI7yhQV0Cxs_ayf3dMD9',
-        'HOST': 'ec2-54-83-205-46.compute-1.amazonaws.com',
-        'PORT': '5432',
-    }
+        'default': {
+                    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+                    'NAME': 'agenda',
+                    'USER': 'postgres',
+                    'PASSWORD': '000000',
+                    'HOST': 'localhost',
+                    'PORT': '5432',
+                    }
 }
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': 'd5snf1vtia97an',
+#        'USER': 'rmwbyxiytiwdzq',
+#        'PASSWORD': 'RMxz34GI7yhQV0Cxs_ayf3dMD9',
+#        'HOST': 'ec2-54-83-205-46.compute-1.amazonaws.com',
+#        'PORT': '5432',
+#    }
+#}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
@@ -70,14 +70,13 @@ USE_L10N = True
 USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
-STATIC_ROOT = 'staticfiles'
+#STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'agenda/static'),
+#STATICFILES_DIRS = (
+#    os.path.join(BASE_DIR, 'agenda/static'),
 #    os.path.join(BASE_DIR, 'static/agenda'),
-)
-
+#)
 
 
 #Custome template folder
