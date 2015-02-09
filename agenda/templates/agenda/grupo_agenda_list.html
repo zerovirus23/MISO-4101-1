@@ -2,27 +2,33 @@
  
 {% block content %}
 
-
+<div class="pure-u-1">
+	<a class="pure-button pure-button-primary" href="/agenda/create">Crear nueva agenda</a>
+</div>
 {% if agenda_list %}
-		<h3>Agendas Disponibles</h3>
+<div class="pure-g">
+	<div class="pure-u-1">
+		<h3>Agendas Disponibles del grupo:</h3>
+	</div>
 
-		<table class="table table-condensed table-responsive">
+	<div class="pure-u-1">
+		<table class="pure-table">
 			{% for agenda in agenda_list %}
 				<tr>
 		    		<td>
-		    			<a class="btn btn-link" role="button" role="button" href="{%url 'agenda:agenda_detail' agenda.id%}">{{agenda.name}}</a>
+		    			<a href="{%url 'agenda:agenda_detail' agenda.id%}">{{agenda.name}}</a>
 		    		</td>
 		    		<td>
 		    			<form action="{%url 'agenda:contact_list'%}" method="get">
 		    				{% csrf_token %}
 		    				<input type="hidden" name="agenda_id" value="{{agenda.id}}"/>
-		    				<button class="btn btn-default btn-sm" type="submit">Contactos</button>
+		    				<button type="submit">Contactos</button>
 		    			</form>
 		    		</td>
 		    		<td align="center">
 		    			<form action="{%url 'agenda:agenda_delete' agenda.id%}" method="post">
 		    				{% csrf_token %}
-		    				<button class="btn btn-default btn-sm" type="submit">Eliminar</button>
+		    				<button type="submit">Eliminar</button>
 		    			</form>
 		    		</td>
 		    		<td align="center">
@@ -31,12 +37,11 @@
 		    	</tr>
 		    {% endfor %}
 		</table>
-
-<a class="btn btn-default" role="button" href="/agenda/create">Crear nueva agenda</a>
-
+	</div>
+</div>
 {% else %}
 <div align="center">
-    <h2>No hay agendas disponibles.</h2>
+    <p>No hay agendas disponibles.</p>
 </div>
 {% endif %}
 

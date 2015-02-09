@@ -32,7 +32,7 @@ class tempo:
     
     
     def iniciar(self):
-        print "starting back up..."
+        print ("starting back up...")
         self.rt.start()
         #rt = RepeatedTimer(2, backup.hacerBackUp, "World") # it auto-starts, no need of rt.start()
         
@@ -43,7 +43,7 @@ class tempo:
         
     
     def detener(self):
-        print "stop back up..."
+        print ("stop back up...")
         self.rt.stop()
         
             

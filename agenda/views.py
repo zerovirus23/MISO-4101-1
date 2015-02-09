@@ -1,7 +1,7 @@
 from django.shortcuts import render#, get_object_or_404
 #from django.http import HttpResponse
 from django.core.urlresolvers import reverse
-from agenda.models import Agenda, Contact, ContactNetwork, Localization
+from agenda.models import Agenda, Contact, Grupo, ContactNetwork, Localization
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.db.models import Q
 from django.shortcuts import redirect
@@ -20,16 +20,24 @@ class AgendaListView(ListView):
         t.iniciar()
         user = self.request.user;
         return Agenda.objects.all().filter(user_id = user.id)
-        
+
+class AgendaListPublicView(ListView):
+    context_object_name = 'agenda_list' 
+    
+    def get_queryset(self):
+        return Agenda.objects.all().filter(type = 1) #El 1 es para agendas públicas
+    
+
 class AgendaCreateView(CreateView):
     model = Agenda
-    fields = ['name']
+    fields = ['name', 'type', 'grupo']
     success_url = '/agenda/'
 
     def form_valid(self, form):
+        user = self.request.user
+        #form.instance.grupo.queryset = Grupo.objects.filter(users__id = user.id)
         form.instance.user = self.request.user
         return super(AgendaCreateView, self).form_valid(form)
-
 class AgendaDetailView(DetailView):
     #t = mytimer.tempo()
     #t.detener()
@@ -44,6 +52,52 @@ class AgendaUpdateView(UpdateView):
 class AgendaDeleteView(DeleteView):
     model = Agenda
     success_url = '/agenda/'
+#==========================================================
+#Clases que gestiona CRUD+L de Grupo
+#==========================================================
+class GrupoListView(ListView):
+    context_object_name = 'grupo_list' 
+    
+    def get_queryset(self):
+        user = self.request.user
+        return Grupo.objects.filter(users__id = user.id)
+
+class AgendaGrupoListView(ListView):
+    context_object_name = 'agenda_list' 
+    template_name = 'agenda/grupo_agenda_list.html'
+    def get(self, request, *args, **kwargs):
+        if ('grupo_id' in self.request.GET) or ('grupo_id' in self.request.session):
+            return super(AgendaGrupoListView, self).get(self, request, *args, **kwargs);
+        else:
+            return redirect('/agenda/grupo')
+    def get_queryset(self):
+        if 'grupo_id' in self.request.GET:
+            grupo_param_id = self.request.GET['grupo_id']
+            self.request.session['grupo_id'] = grupo_param_id
+        elif 'grupo_id' in self.request.session:
+            grupo_param_id = self.request.session['grupo_id']
+        
+        return Agenda.objects.filter(grupo__id = grupo_param_id)
+    
+        
+class GrupoCreateView(CreateView):
+    model = Grupo
+    fields = ['name', 'users']
+    success_url = '/agenda/grupo/'
+    
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(GrupoCreateView, self).form_valid(form)
+
+class GrupoDetailView(DetailView):
+    model = Grupo
+    
+class GrupoUpdateView(UpdateView):
+    model = Grupo
+    
+    def get_success_url(self):
+        return reverse('agenda:grupo_detail', kwargs={'pk': self.object.pk,})
+    
     
 #==========================================================
 #Clases que gestiona CRUD+L de Contactos

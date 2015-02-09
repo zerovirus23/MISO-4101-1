@@ -3,13 +3,34 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Modelo de datos
-class Agenda(models.Model):
+class Grupo(models.Model):
     name = models.CharField(max_length=50)
-    user = models.ForeignKey(User)
+    users = models.ManyToManyField(User)
+    #agendas = models.ManyToManyField(Agenda)
+    #user = models.ForeignKey(User)
     
     #Representación como cadena del objeto
     def __str__(self):
         return self.name
+    
+class Agenda(models.Model):
+    name = models.CharField(max_length=50)
+    user = models.ForeignKey(User)
+    type = models.IntegerField(choices=((1, 'Pública'), (2, 'Privada')), default=2)
+    
+    grupo = models.ForeignKey(Grupo, blank=True, null=True)
+    #Representación como cadena del objeto
+    def __str__(self):
+        return self.name
+    
+
+#class Miembro(models.Model):
+#    grupo = models.ForeignKey(Grupo)
+#    user = models.ForeignKey(User)
+    
+    #Representación como cadena del objeto
+#    def __str__(self):
+#        return str(self.id)
     
 class Contact(models.Model):
     first_name = models.CharField(max_length=50)
