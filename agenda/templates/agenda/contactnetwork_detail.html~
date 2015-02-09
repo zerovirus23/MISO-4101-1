@@ -4,7 +4,7 @@
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<table class="table table-condensed table-responsive"align="center">
+<table class="table"align="center">
 	<tr>
 		<td align="center" colspan="2">
 			<h2>Información de Red Social</h2>

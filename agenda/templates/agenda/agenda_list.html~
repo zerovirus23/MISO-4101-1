@@ -32,7 +32,7 @@
 
 {% else %}
 <div align="center">
-    <h2>No hay agendas disponibles.</h2>
+    <p>No hay agendas disponibles.</p>
 </div>
 {% endif %}
 

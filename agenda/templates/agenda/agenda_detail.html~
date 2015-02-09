@@ -11,8 +11,8 @@
 		</td>
 	</tr>
 	<tr>
-		<td><h4>Nombre:</h4></td>
-		<td><h4>{{agenda.name}}</h4></td>
+		<td><h3>Nombre:</h3></td>
+		<td><h3>{{agenda.name}}</h3></td>
 	</tr>
 </table>
 <br>

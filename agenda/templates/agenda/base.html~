@@ -64,7 +64,6 @@
 <!-- Content -->
           <div class="inner cover">
             {% if title %} &rsaquo; {{ title }}{% endif %}
-{% endif %}
 {% block messages %}
 {% if messages %}
 <ul class="list-group">{% for message in messages %}

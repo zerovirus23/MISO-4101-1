@@ -5,7 +5,7 @@
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
 <h2>Información de Localización</h2>
-<table class="table table-condensed table-responsive" align="center">
+<table class="table table-condensed " align="center">
 	<tr>
 		<td><b>Nombre:</b></td>
 		<td>{{localization.name}}</td>

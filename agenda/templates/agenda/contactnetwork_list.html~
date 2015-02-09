@@ -24,7 +24,7 @@
 					</h4>
 		    		</td>
 		    		<td>
-		    			<h4>{{network.username}}</h4>
+		    			{{network.username}}
 		    		</td>
 		    		<td align="center">
 		    			<form action="{%url 'agenda:network_delete' network.id%}" method="post">
