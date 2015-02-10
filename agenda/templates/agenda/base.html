@@ -41,9 +41,21 @@
 
 		<nav>
                 <ul class="nav masthead-nav">
-                  <li class="active"><a href="#">Home</a></li>
-                  <li><a href="#">Features</a></li>
-                  <li><a href="#">Contact</a></li>
+                  <li class="active"><a href="/">Home</a></li>
+                 
+		  <li>
+			  <div class="btn-group">
+			  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">personalizar<span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu" role="menu">
+			  <li><a href="#" class="btn btn-warning">amarillo</a></li>
+			  <li><a href="#" class="btn btn-success">verde</a></li>
+			  <li><a href="#" class="btn btn-danger">rojo</a></li>
+			  <li><a href="#" class="btn btn-primary">azul</a></li>
+			  </ul>
+			  </div>
+
+		  </li>
 		  <li> {% block welcome-msg %}
 	                {% trans 'Bienvenido,' %}
 	                <strong>{% firstof user.get_short_name user.get_username %}</strong>.
