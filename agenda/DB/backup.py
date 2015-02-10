@@ -60,13 +60,13 @@ def hacerBackUp():
         os.remove(FILENAME)
         
         
-        os.system('heroku pgbackups:capture --expire --remote dev') 
+        os.system('pgbackups:capture --expire --remote dev') 
         #command = 'export PGPASSWORD=%s\npg_dump %s -U %s --file="%s" -h localhost' % (DB_USER_PASSWORD, DB_NAME, DB_USER, FILENAME)
         #os.system(command)
     else:
          command = 'export PGPASSWORD=%s\npg_dump %s -U %s --file="%s" -h localhost' % (DB_USER_PASSWORD, DB_NAME, DB_USER, FILENAME)
          
-         os.system('heroku pgbackups:capture --expire --remote dev')
+         os.system('pgbackups:capture --expire --remote dev')
          #os.system(command)
          #print("comando" + command)
     print ("Backup script completed")
