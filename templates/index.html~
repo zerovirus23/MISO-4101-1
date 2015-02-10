@@ -9,10 +9,10 @@
 		<a class="btn btn-default btn-lg" href="/agenda">Mis agendas</a></br>
 		</div>
 		<div class="col-md-4">
-		<a class="btn btn-default btn-lg" href="/agenda/public">Agendas Públicas</a></br>
+		<a href="/agenda/public">Agendas Públicas</a></br>
 		</div>
 		<div class="col-md-4">
-		<a class="btn btn-default btn-lg" href="/agenda/grupo">Grupos</a>
+		<a href="/agenda/grupo">Grupos</a>
 		</div>
 	</div>
 
