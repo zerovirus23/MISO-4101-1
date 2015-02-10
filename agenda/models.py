@@ -61,10 +61,10 @@ class Localization(models.Model):
     contact = models.ForeignKey(Contact)
     
 # Modelo de datos
-class Plantilla(models.Model):
-    name = models.CharField(max_length=50)
-    estilo = models.CharField(max_length=300)
-    users = models.ManyToManyField(User)
+#class Plantilla(models.Model):
+#    name = models.CharField(max_length=50)
+#    estilo = models.CharField(max_length=300)
+#    users = models.ManyToManyField(User)
     #agendas = models.ManyToManyField(Agenda)
     #user = models.ForeignKey(User)
 
