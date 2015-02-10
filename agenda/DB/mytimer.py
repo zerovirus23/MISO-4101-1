@@ -1,6 +1,7 @@
 from agenda.DB import backup
 from time import sleep
 from threading import Timer
+from AP_Agenda.settings import MYTIMER
 
 class RepeatedTimer(object):
     def __init__(self, interval, function):
@@ -28,7 +29,7 @@ class RepeatedTimer(object):
         self.is_running = False
 
 class tempo:
-    rt = RepeatedTimer(30, backup.hacerBackUp)
+    rt = RepeatedTimer(settings.MYTIMER, backup.hacerBackUp)
     
     
     def iniciar(self):

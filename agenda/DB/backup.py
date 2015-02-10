@@ -67,7 +67,7 @@ def hacerBackUp():
          command = 'export PGPASSWORD=%s\npg_dump %s -U %s --file="%s" -h localhost' % (DB_USER_PASSWORD, DB_NAME, DB_USER, FILENAME)
          
          os.system('pgbackups:capture --expire --remote dev')
-         #os.system(command)
+         os.system(command)
          #print("comando" + command)
     print ("Backup script completed")
     #print ("Your backups has been created in '" + TODAYBACKUPPATH + "' directory")
