@@ -40,15 +40,15 @@ WSGI_APPLICATION = 'AP_Agenda.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
-#DB_HOST = 'ec2-54-83-205-46.compute-1.amazonaws.com'
-#DB_USER = 'rmwbyxiytiwdzq'
-#DB_USER_PASSWORD = 'RMxz34GI7yhQV0Cxs_ayf3dMD9'
-#DB_NAME = 'd5snf1vtia97an'
+DB_HOST = 'ec2-54-83-205-46.compute-1.amazonaws.com'
+DB_USER = 'rmwbyxiytiwdzq'
+DB_USER_PASSWORD = 'RMxz34GI7yhQV0Cxs_ayf3dMD9'
+DB_NAME = 'd5snf1vtia97an'
 
-DB_HOST = 'localhost'
-DB_USER = 'postgres'
-DB_USER_PASSWORD = '000000'
-DB_NAME = 'agenda'
+#DB_HOST = 'localhost'
+#DB_USER = 'postgres'
+#DB_USER_PASSWORD = '000000'
+#DB_NAME = 'agenda'
 
     
 #DATABASES = {
