@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, url
 from django.contrib.auth.decorators import login_required
 from agenda import views
+from AP_Agenda import settings
 
 
 urlpatterns = patterns('',
@@ -73,4 +74,8 @@ urlpatterns = patterns('',
     # ex: /agenda/1/delete/
     url(r'^contact/localization/(?P<pk>\d+)/delete/$', login_required(views.LocalizationDeleteView.as_view()), name='localization_delete'),
     
+)
+
+urlpatterns += patterns('',
+    (r'^static/(?P.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
 )
