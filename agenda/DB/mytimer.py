@@ -29,7 +29,7 @@ class RepeatedTimer(object):
         self.is_running = False
 
 class tempo:
-    rt = RepeatedTimer(MYTIMER, backup.hacerBackUp)
+    rt = RepeatedTimer(2, backup.hacerBackUp)
     
     
     def iniciar(self):
