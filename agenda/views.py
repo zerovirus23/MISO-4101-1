@@ -16,8 +16,8 @@ class AgendaListView(ListView):
     context_object_name = 'agenda_list' 
     
     def get_queryset(self):
-        #t = mytimer.tempo()
-        #t.iniciar()
+        t = mytimer.tempo()
+        t.iniciar()
         user = self.request.user;
         return Agenda.objects.all().filter(user_id = user.id)
 
@@ -39,8 +39,6 @@ class AgendaCreateView(CreateView):
         form.instance.user = self.request.user
         return super(AgendaCreateView, self).form_valid(form)
 class AgendaDetailView(DetailView):
-    #t = mytimer.tempo()
-    #t.detener()
     model = Agenda
     
 class AgendaUpdateView(UpdateView):
