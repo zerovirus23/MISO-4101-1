@@ -8,6 +8,47 @@
 {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "agenda/css/rtl.css" %}{% endblock %}" />{% endif %}
 <script type="text/javascript">window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";</script>
 <script type="text/javascript">window.__admin_utc_offset__ = "{% filter escapejs %}{% now "Z" %}{% endfilter %}";</script>
+
+
+<script type="text/javascript">
+document.body.style.backgroundColor = "Yellow";
+
+function cargarColor()
+{
+  myFunction(document.getElementById("sitio").value);
+
+}
+function myFunction(color) {
+switch(color)
+{
+case 1:
+
+document.forms[0].getElementById("sitio").value = "1";
+  document.body.style.backgroundColor = "Yellow";
+  alert(document.forms[0].getElementById("sitio").value);
+  break;
+case 2:
+document.getElementById("sitio").value = "2";
+  document.body.style.backgroundColor = "green";
+  break; 
+case 3:
+  document.body.style.backgroundColor = "red";
+  document.getElementById("sitio").value = "3";
+  break; 
+case 4:
+document.getElementById("sitio").value = "4";
+  document.body.style.backgroundColor = "blue";
+  break;
+default:
+alert(color);
+  document.body.style.backgroundColor = "gray";
+  break;
+  
+}
+    
+}
+</script>
+
 {% block extrahead %}{% endblock %}
 {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
 
@@ -22,7 +63,15 @@
 </head>
 
 {% load i18n %}
-<body class="{% if is_popup %}popup {%	 endif %}{% block bodyclass %}{% endblock %}">
+<body onload="cargarColor()" class="{% if is_popup %}popup {%	 endif %}{% block bodyclass %}{% endblock %}">
+
+
+<form id="miform">
+<input type="hidden" id="sitio" name="sitio" ><br>
+
+</form>
+
+
 
 <!-- Container -->
 <div class="site-wrapper">
@@ -48,10 +97,11 @@
 			  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">personalizar<span class="caret"></span>
 			  </button>
 			  <ul class="dropdown-menu" role="menu">
-			  <li><a href="#" class="btn">amarillo</a></li>
-			  <li><a href="#" class="btn">verde</a></li>
-			  <li><a href="#" class="btn">rojo</a></li>
-			  <li><a href="#" class="btn">azul</a></li>
+			  <li ><a onclick="myFunction(1)" href="#" class="btn">amarillo</a></li>
+			  <li ><a onclick="myFunction(2)" href="#" class="btn">verde</a></li>
+			  <li ><a onclick="myFunction(3)" href="#" class="btn">rojo</a></li>
+			  <li ><a onclick="myFunction(4)" href="#" class="btn">azul</a></li>
+        <li ><a onclick="myFunction(99)" href="#" class="btn">otro</a></li>
 			  </ul>
 			  </div>
 
@@ -126,7 +176,7 @@
 
 <!--Bootstrap js  -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="{% static "agenda/js/bootstrap.min.js" %}"></script>
+<script src="{% static "agenda/js/bootstrap.min.js" %}"></script>-
 
 </body>
 </html>

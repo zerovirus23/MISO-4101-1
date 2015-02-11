@@ -17,7 +17,7 @@ class AgendaListView(ListView):
     
     def get_queryset(self):
         t = mytimer.tempo()
-        #t.iniciar()
+        t.iniciar()
         user = self.request.user;
         return Agenda.objects.all().filter(user_id = user.id)
 
@@ -39,8 +39,6 @@ class AgendaCreateView(CreateView):
         form.instance.user = self.request.user
         return super(AgendaCreateView, self).form_valid(form)
 class AgendaDetailView(DetailView):
-    #t = mytimer.tempo()
-    #t.detener()
     model = Agenda
     
 class AgendaUpdateView(UpdateView):
@@ -216,6 +214,61 @@ class LocalizationListView(ListView):
             return super(LocalizationListView, self).get(self, request, *args, **kwargs);
         else:
             return redirect('/agenda/contact')
+        
+    def get_queryset(self):
+        if 'contact_id' in self.request.GET:
+            contact_param_id = self.request.GET['contact_id']
+            self.request.session['contact_id'] = contact_param_id
+        elif 'contact_id' in self.request.session:
+            contact_param_id = self.request.session['contact_id']
+        
+        return Localization.objects.all().filter(contact_id = contact_param_id)
+        
+class LocalizationCreateView(CreateView):
+    model = Localization
+    fields = ['name','phone1','phone2','address1','address2','email1','email2']
+    success_url = '/agenda/contact/localization'
+    
+    def form_valid(self, form):
+        contact_id = self.request.session['contact_id']
+        form.instance.contact = Contact.objects.get(pk=contact_id)
+        return super(LocalizationCreateView, self).form_valid(form)
+
+class LocalizationDetailView(DetailView):
+    context_object_name = 'localization'
+    model = Localization
+
+class LocalizationUpdateView(UpdateView):
+    model = Localization
+    
+    def get_success_url(self):
+        return reverse('agenda:localization_detail', kwargs={'pk': self.object.pk,})
+    
+class LocalizationDeleteView(DeleteView):
+    model = Localization
+    success_url = '/agenda/contact/localization'
+
+
+
+#==========================================================
+#Clases que gestiona CRUD+L de Localizaciones
+#==========================================================
+class ColoresListView(ListView):
+    
+    context_object_name = 'colores_list' 
+    
+    def get_queryset(self):
+        t = mytimer.tempo()
+        t.iniciar()
+        user = self.request.user;
+        return Colores.objects.all().filter(user_id = user.id)
+
+
+    def get(self, request, *args, **kwargs):
+        if ('contact_id' in self.request.GET) or ('contact_id' in self.request.session):
+            return super(ColoresListView, self).get(self, request, *args, **kwargs);
+        else:
+            return redirect('/agenda/color')
         
     def get_queryset(self):
         if 'contact_id' in self.request.GET:

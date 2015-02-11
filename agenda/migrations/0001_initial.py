@@ -15,9 +15,21 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Agenda',
             fields=[
-                ('id', models.AutoField(auto_created=True, verbose_name='ID', serialize=False, primary_key=True)),
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('name', models.CharField(max_length=50)),
-                ('type', models.IntegerField(default=2, choices=[(1, 'Pública'), (2, 'Privada')])),
+                ('type', models.IntegerField(choices=[(1, 'Pública'), (2, 'Privada')], default=2)),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Colores',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=50)),
+                ('estilo', models.CharField(max_length=300)),
+                ('users', models.ManyToManyField(to=settings.AUTH_USER_MODEL)),
             ],
             options={
             },
@@ -26,7 +38,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Contact',
             fields=[
-                ('id', models.AutoField(auto_created=True, verbose_name='ID', serialize=False, primary_key=True)),
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('first_name', models.CharField(max_length=50)),
                 ('last_name', models.CharField(max_length=50)),
                 ('company_name', models.CharField(max_length=200)),
@@ -40,7 +52,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='ContactNetwork',
             fields=[
-                ('id', models.AutoField(auto_created=True, verbose_name='ID', serialize=False, primary_key=True)),
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('name', models.CharField(max_length=50)),
                 ('username', models.CharField(max_length=255)),
                 ('contact', models.ForeignKey(to='agenda.Contact')),
@@ -52,7 +64,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Grupo',
             fields=[
-                ('id', models.AutoField(auto_created=True, verbose_name='ID', serialize=False, primary_key=True)),
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('name', models.CharField(max_length=50)),
                 ('users', models.ManyToManyField(to=settings.AUTH_USER_MODEL)),
             ],
@@ -63,7 +75,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Localization',
             fields=[
-                ('id', models.AutoField(auto_created=True, verbose_name='ID', serialize=False, primary_key=True)),
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('name', models.CharField(max_length=200)),
                 ('phone1', models.CharField(max_length=20)),
                 ('phone2', models.CharField(max_length=20)),
@@ -80,7 +92,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='agenda',
             name='grupo',
-            field=models.ForeignKey(blank=True, to='agenda.Grupo', null=True),
+            field=models.ForeignKey(blank=True, null=True, to='agenda.Grupo'),
             preserve_default=True,
         ),
         migrations.AddField(
