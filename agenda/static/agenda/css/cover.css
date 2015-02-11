@@ -177,22 +177,26 @@ body {
 }
 /** agrega estilo formulario */
 .formulario{
-  padding-left: 35%;
+  padding-left: 25%;
 }
 .boton input{
   background-color: #444;
-  font-size: 16px;
-  margin-top: 10px;
+  font-size: 20px;
+  margin-top: 30px;
   width: 90%;
+  height: 50%;
 
 }
 .formulario-usuario td{
+  font-size: 20px;
   padding-bottom: 10px;
 }
 .formulario-password td{
+  font-size: 20px;
   padding-top: 10px;
 }
 td{
+  font-size: 20px;
    border-bottom: #191919;
 }
 .scroll-contact{

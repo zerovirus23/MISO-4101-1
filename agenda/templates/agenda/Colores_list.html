@@ -1,0 +1,58 @@
+{% extends "agenda/base.html" %}
+ 
+{% block content %}
+	<div class="espacio-contact">
+
+	<a class="btn btn-default" role="button" href="{%url 'agenda:contact_create'%}">Crear nuevo contacto</a>
+
+{% if contact_list %}
+
+		
+		
+		<h3>Agenda de Contactos</h3>
+		<form class="form-inline" action="{%url 'agenda:contact_search'%}" method="get">
+
+			<div class="form-group">
+			<input type="text" class="form-control" placeholder="Buscar contacto" name="contactFilter" value="{{contactFilter}}"/>
+			</div>
+
+			<button class="btn btn-default" type="submit">Filtrar</Button>
+		</form>
+		</div>
+
+		<div class="scroll-contact">
+		<table class="table table-condensed table-responsive">
+			{% for contact in contact_list %}
+				<tr>
+		    		<td>
+		    			<h4><a href="{%url 'agenda:contact_detail' contact.id%}">{{contact.first_name}} {{contact.last_name}}</a></h4>
+		    		</td>
+		    		<td align="center">
+		    			<form action="{%url 'agenda:localization_list'%}" method="get">
+		    				{% csrf_token %}
+		    				<input type="hidden" name="contact_id" value="{{contact.id}}"/>
+		    				<button class="btn btn-link btn-xs" type="submit">Localizaciones</button>
+		    			</form>
+		    			<form action="{%url 'agenda:network_list'%}" method="get">
+		    				{% csrf_token %}
+		    				<input type="hidden" name="contact_id" value="{{contact.id}}"/>
+		    				<button class="btn btn-link btn-xs" type="submit">Redes Sociales</button>
+		    			</form>
+		    			<form action="{%url 'agenda:contact_delete' contact.id%}" method="post">
+		    				{% csrf_token %}
+		    				<button class="btn btn-link btn-xs" type="submit">Eliminar</button>
+		    			</form>
+		    		</td>
+		    	</tr>
+		    {% endfor %}
+		</table>
+	
+	</div>
+{% else %}
+<div align="center">
+    <h2>No hay contactos disponibles.</h2>
+</div>
+</div>
+{% endif %}
+<a class="visualizar-contact" href="{%url 'agenda:agenda_list'%}">Volver a Agendas</a>
+{% endblock %}
