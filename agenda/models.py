@@ -70,7 +70,7 @@ class Colores(models.Model):
     estilo = models.CharField(max_length=300)
     users = models.ManyToManyField(User)
 
-#Representación como cadena del objeto
-def __str__(self):
+    #Representación como cadena del objeto
+    def __str__(self):
     return self.name + ' - '
 

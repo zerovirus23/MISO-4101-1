@@ -2,6 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.views.generic.base import TemplateView
 from django.contrib.auth.decorators import login_required
+from AP_Agenda.settings import *
 
 urlpatterns = patterns('',
     # Examples:
