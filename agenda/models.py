@@ -72,5 +72,5 @@ class Colores(models.Model):
 
     #Representación como cadena del objeto
     def __str__(self):
-    return self.name + ' - '
+        return self.name + ' - '
 
