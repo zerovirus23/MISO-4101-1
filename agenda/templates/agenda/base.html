@@ -10,45 +10,6 @@
 <script type="text/javascript">window.__admin_utc_offset__ = "{% filter escapejs %}{% now "Z" %}{% endfilter %}";</script>
 
 
-<script type="text/javascript">
-document.body.style.backgroundColor = "Yellow";
-
-function cargarColor()
-{
-  myFunction(document.getElementById("sitio").value);
-
-}
-function myFunction(color) {
-switch(color)
-{
-case 1:
-
-document.forms[0].getElementById("sitio").value = "1";
-  document.body.style.backgroundColor = "Yellow";
-  alert(document.forms[0].getElementById("sitio").value);
-  break;
-case 2:
-document.getElementById("sitio").value = "2";
-  document.body.style.backgroundColor = "green";
-  break; 
-case 3:
-  document.body.style.backgroundColor = "red";
-  document.getElementById("sitio").value = "3";
-  break; 
-case 4:
-document.getElementById("sitio").value = "4";
-  document.body.style.backgroundColor = "blue";
-  break;
-default:
-alert(color);
-  document.body.style.backgroundColor = "gray";
-  break;
-  
-}
-    
-}
-</script>
-
 {% block extrahead %}{% endblock %}
 {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
 
@@ -78,11 +39,6 @@ window.onload = hey (localStorage.background);
 {% load i18n %}
 <body onload="cargarColor()" class="{% if is_popup %}popup {%	 endif %}{% block bodyclass %}{% endblock %}">
 
-
-<form id="miform">
-<input type="hidden" id="sitio" name="sitio" ><br>
-
-</form>
 
 
 
