@@ -26,10 +26,27 @@
 <script language="JavaScript">
 
 hey = function(){
+  //localStorage.setItem('background','{% static 'agenda/css/cover.css' %}');hey();
 document.getElementById('estilos').setAttribute('href', localStorage.background);
 }
 
 window.onload = hey (localStorage.background);
+
+
+if ( localStorage.getItem("background") == null)
+{
+    //default no hay cookies
+    //setear href aqui
+document.getElementById('estilos').setAttribute('href', '{% static "agenda/css/cover.css" %}');
+
+    //getColour = localStorage.background;
+    //$('body').css('background', getColour);
+
+}
+else
+{
+  window.onload = hey (localStorage.background);
+}
 
 </script>
 
@@ -37,7 +54,7 @@ window.onload = hey (localStorage.background);
 </head>
 
 {% load i18n %}
-<body onload="cargarColor()" class="{% if is_popup %}popup {%	 endif %}{% block bodyclass %}{% endblock %}">
+<body class="{% if is_popup %}popup {%	 endif %}{% block bodyclass %}{% endblock %}">
 
 
 
@@ -81,7 +98,7 @@ window.onload = hey (localStorage.background);
 	                <strong>{% firstof user.get_short_name user.get_username %}</strong>.
 	            {% endblock %}</li>
               <li>
-                <a href="/logout">salir</a>
+                <a href="/logout" onClick="localStorage.setItem('background','{% static 'agenda/css/cover.css' %}');hey()">salir</a>
               </li>
                 </ul>
                 </nav>
