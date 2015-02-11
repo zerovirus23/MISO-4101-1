@@ -6,6 +6,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.db.models import Q
 from django.shortcuts import redirect
 
+
 #==========================================================
 #Clases que gestiona CRUD+L de Agenda
 #==========================================================
@@ -30,6 +31,7 @@ class AgendaDetailView(DetailView):
     
 class AgendaUpdateView(UpdateView):
     model = Agenda
+    fields = ['name']
     
     def get_success_url(self):
         return reverse('agenda:agenda_detail', kwargs={'pk': self.object.pk,})
@@ -74,6 +76,7 @@ class ContactDetailView(DetailView):
 
 class ContactUpdateView(UpdateView):
     model = Contact
+    fields = ['first_name', 'last_name', 'company_name']
     
     def get_success_url(self):
         return reverse('agenda:contact_detail', kwargs={'pk': self.object.pk,})
@@ -130,6 +133,7 @@ class NetworkDetailView(DetailView):
 
 class NetworkUpdateView(UpdateView):
     model = ContactNetwork
+    fields = ['username', 'name']
     
     def get_success_url(self):
         return reverse('agenda:network_detail', kwargs={'pk': self.object.pk,})
@@ -175,6 +179,7 @@ class LocalizationDetailView(DetailView):
 
 class LocalizationUpdateView(UpdateView):
     model = Localization
+    fields = ['name','phone1','phone2','address1','address2','email1','email2']
     
     def get_success_url(self):
         return reverse('agenda:localization_detail', kwargs={'pk': self.object.pk,})

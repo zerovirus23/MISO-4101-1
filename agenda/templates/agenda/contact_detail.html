@@ -4,31 +4,32 @@
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<table align="center">
-	<tr>
-		<td align="center" colspan="2">
-			<h2>Información de contacto</h2>
-		</td>
-	</tr>
-	<tr>
-		<td><b>Nombre:</b></td>
-		<td>{{contact.first_name}}</td>
-	</tr>
-	<tr>
-		<td><b>Apellido:</b></td>
-		<td>{{contact.last_name}}</td>
-	</tr>
-	<tr>
-		<td><b>Empresa:</b></td>
-		<td>{{contact.company_name}}</td>
-	</tr>
-</table>
-<br>
-<br>
-<div align="center">
+<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+    <div class="panel panel-info" >
+        <div class="panel-heading">
+            <div class="panel-title">Información de contacto</div>
+        </div>     
 
-<a class="pure-button pure-button-primary" href="{%url 'agenda:contact_update' contact.id%}">Actualizar Contacto</a> | 
-<a href="{%url 'agenda:contact_list'%}">Volver</a>
+        <div style="padding-top:30px; padding-left:50px;padding-right:50px" class="panel-body" >
+        	<dl class="dl-horizontal">
+			  <dt>Nombre: </dt>
+			  <dd>{{contact.first_name}}</dd>
+			  
+			  <dt>Apellido: </dt>
+			  <dd>{{contact.last_name}}</dd>
+			  
+			  <dt>Empresa: </dt>
+			  <dd>{{contact.company_name}}</dd>
+			</dl>
+				
+			<div style="margin-top:10px" class="form-group">
+                <div class="col-sm-12 controls" style="text-align:center">
+                  <button type="button" class="btn btn-primary" onClick="location.href='{%url 'agenda:contact_update' contact.id%}'">Actualizar Contacto</button>
+                  <button type="button" class="btn btn-primary" onClick="location.href='{%url 'agenda:contact_list'%}'">Volver</button>
+                </div>
+            </div>
+        </div>                     
+    </div>
 </div>
 
 {% endblock %}

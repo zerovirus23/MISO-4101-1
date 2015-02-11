@@ -17,7 +17,7 @@ class Contact(models.Model):
     agenda = models.ForeignKey(Agenda)
     
     class Meta:
-        ordering = ['first_name', 'last_name']
+        ordering = ['id']
     
     #Representación como cadena del objeto
     def __str__(self):
@@ -27,6 +27,9 @@ class ContactNetwork(models.Model):
     name = models.CharField(max_length=50)
     username = models.CharField(max_length=255)
     contact = models.ForeignKey(Contact)
+    
+    class Meta:
+        ordering = ['id']
     
 class Localization(models.Model):
     name = models.CharField(max_length=200)
@@ -38,6 +41,9 @@ class Localization(models.Model):
     email2 = models.EmailField(max_length=254)
     contact = models.ForeignKey(Contact)
     
+    class Meta:
+        ordering = ['id']
+        
     #Representación como cadena del objeto
     def __str__(self):
         return self.name + ' - ' + self.phone1 + ' - ' + self.address1 + ' - ' + self.email1

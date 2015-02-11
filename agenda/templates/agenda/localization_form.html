@@ -1,23 +1,69 @@
 {% extends "agenda/base.html" %}
  
 {% block content %}
+{% load agenda_filters %}
+	
+<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+    <div class="panel panel-info" >
+        <div class="panel-heading">
+            <div class="panel-title">Información de Localizacón!</div>
+        </div>     
 
+        <div style="padding-top:30px; padding-left:50px;padding-right:50px" class="panel-body">
+        	<form action="" method="post" role="form">
+				{% csrf_token %}
+					
+				<div class="form-group">
+					{{ form.name.errors }}
+					<label for="id_name">Nombre:</label>
+					{{ form.name | add_class_and_placeholder:"Nombre de localización"}}
+				</div>
+				
+				<div class="form-group">
+					{{ form.phone1.errors }}
+					<label for="id_phone1">Teléfono 1:</label>
+					{{ form.phone1 | add_class_and_placeholder:"Teléfono principal"}}
+				</div>
+				
+				<div class="form-group">
+					{{ form.phone2.errors }}
+					<label for="id_phone2">Teléfono 2:</label>
+					{{ form.phone2 | add_class_and_placeholder:"Teléfono secundario"}}
+				</div>
+				
+				<div class="form-group">
+					{{ form.address1.errors }}
+					<label for="id_address1">Dirección 1:</label>
+					{{ form.address1 | add_class_and_placeholder:"Dirección principal"}}
+				</div>
+				
+				<div class="form-group">
+					{{ form.address2.errors }}
+					<label for="id_address2">Dirección 2:</label>
+					{{ form.address2 | add_class_and_placeholder:"Dirección secundaria"}}
+				</div>
+				
+				<div class="form-group">
+					{{ form.email1.errors }}
+					<label for="id_email2">Correo 1:</label>
+					{{ form.email1 | add_class_and_placeholder:"Correo principal"}}
+				</div>
+				
+				<div class="form-group">
+					{{ form.email2.errors }}
+					<label for="id_email2">Correo 2:</label>
+					{{ form.email2 | add_class_and_placeholder:"Correo secundario"}}
+				</div>
+					
+				<div style="margin-top:10px" class="form-group">
+                    <div class="col-sm-12 controls" style="text-align:center">
+                      <input type="submit" class="btn btn-primary" value="Guardar"/>
+                      <button type="button" class="btn btn-primary" onClick="location.href='{%url 'agenda:contact_list'%}'">Cancelar</button>
+                    </div>
+                </div>
+			</form>
+        </div>                     
+    </div>  
+</div>
 
-<form action="" method="post">
-	{% csrf_token %}
-	<table align="center">
-		<tr>
-			<td align="center" colspan="2">
-				<h3>Información de Red Social!</h3>
-			</td>
-		</tr>
-		{{ form.as_table }}
-		<tr>
-			<td align="center" colspan="2">
-				<input type="submit" value="Guardar"/>
-				<input type="button" value="Cancelar" onClick="window.history.back()"/>
-			</td>
-		</tr>
-	</table>
-</form>
 {% endblock %}
