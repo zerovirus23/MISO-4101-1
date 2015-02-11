@@ -6,6 +6,9 @@ class Agenda(models.Model):
     name = models.CharField(max_length=50)
     user = models.ForeignKey(User)
     
+    class Meta:
+        ordering = ['id']
+        
     #Representación como cadena del objeto
     def __str__(self):
         return self.name
