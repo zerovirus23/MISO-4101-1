@@ -31,7 +31,7 @@
 	        </div>
 	        {% if user.is_active and user.is_staff %}
 	        <div class="pure-u-1-8">
-	        	<img class="ger-img" src="{% static "agenda/img/logo.png" %}"></img>
+	        	<a href="/"><img class="ger-img" src="{% static "agenda/img/logo.png" %}"></img></a>
 	        </div>
 	        <div class="pure-u-3-4">
 	        	<h1 id="ger-header-title">Mi agenda feliz</h1>
@@ -52,6 +52,17 @@
     
     {% if title %} &rsaquo; {{ title }}{% endif %}
     </div>
+    <div class="pure-g">
+	   	<div class="pure-u-1-3">
+	   		<h3 class="ger-navigation"><a href="/agenda">Mis agendas</a></h3>
+		</div>
+		<div class="pure-u-1-3">  	
+		   	<h3 class="ger-navigation"><a href="/agenda/grupo">Mis grupos</a></h3>
+		</div>
+		<div class="pure-u-1-3">  	
+		   	<h3 class="ger-navigation"><a href="/agenda/public">Agendas públicas</a></h3>
+		</div>
+	</div>
     {% endblock %}
     {% endif %}
 

@@ -52,4 +52,24 @@ h3{
 	background: #FFFFFF;
 }
 
-
+.ger-principal-container{
+	padding: 5em;
+}
+.ger-container{
+	background-color: #FFF;
+	min-height: 30em;
+}
+.ger-content{
+	border-color:#a90329;
+	border-width:2px;
+}
+.ger-content h2{
+	padding: 2em 0;
+	border-width: 2em;
+	border-radius: 2em;
+	text-align: center;
+	color: #000
+}
+.ger-navigation{
+	text-align: center;
+}
