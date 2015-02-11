@@ -16,8 +16,8 @@ class AgendaListView(ListView):
     context_object_name = 'agenda_list' 
     
     def get_queryset(self):
-        t = mytimer.tempo()
-        t.iniciar()
+        #t = mytimer.tempo()
+        #t.iniciar()
         user = self.request.user;
         return Agenda.objects.all().filter(user_id = user.id)
 
@@ -112,8 +112,8 @@ class ContactListView(ListView):
             return redirect('/agenda')
         
     def get_queryset(self):
-        t = mytimer.tempo()
-        t.detener()
+        #t = mytimer.tempo()
+        #t.detener()
         if 'agenda_id' in self.request.GET:
             agenda_param_id = self.request.GET['agenda_id']
             self.request.session['agenda_id'] = agenda_param_id
