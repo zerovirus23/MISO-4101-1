@@ -28,7 +28,7 @@ body {
 
   height: 100%;
 /* modificar fondo */
-  background-color:#191919;
+  background-color:#248F24;
 }
 body {
 /* modificar color texto */

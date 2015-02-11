@@ -110,8 +110,8 @@ class ContactListView(ListView):
             return redirect('/agenda')
         
     def get_queryset(self):
-        t = mytimer.tempo()
-        t.detener()
+        #t = mytimer.tempo()
+        #t.detener()
         if 'agenda_id' in self.request.GET:
             agenda_param_id = self.request.GET['agenda_id']
             self.request.session['agenda_id'] = agenda_param_id

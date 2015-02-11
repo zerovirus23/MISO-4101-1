@@ -59,7 +59,20 @@ alert(color);
 
 <!--<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/pure/0.5.0/pure-min.css"/> -->
 <link rel="stylesheet" type="text/css" href="{% static "agenda/css/bootstrap.min.css" %}"/>
-<link rel="stylesheet" type="text/css" href="{% static "agenda/css/cover.css" %}"/>
+<link id="estilos" rel="stylesheet" type="text/css" href="{% static "agenda/css/cover.css" %}"/>
+
+
+<script language="JavaScript">
+
+hey = function(){
+document.getElementById('estilos').setAttribute('href', localStorage.background);
+}
+
+window.onload = hey (localStorage.background);
+
+</script>
+
+
 </head>
 
 {% load i18n %}
@@ -74,7 +87,7 @@ alert(color);
 
 
 <!-- Container -->
-<div class="site-wrapper">
+<div id="contenedor"class="site-wrapper">
 {% if not is_popup %}
       <div class="site-wrapper-inner">
 {% block branding %}{% endblock %}
@@ -96,12 +109,13 @@ alert(color);
 			  <div class="btn-group">
 			  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">personalizar<span class="caret"></span>
 			  </button>
+
 			  <ul class="dropdown-menu" role="menu">
-			  <li ><a onclick="myFunction(1)" href="#" class="btn">amarillo</a></li>
-			  <li ><a onclick="myFunction(2)" href="#" class="btn">verde</a></li>
-			  <li ><a onclick="myFunction(3)" href="#" class="btn">rojo</a></li>
-			  <li ><a onclick="myFunction(4)" href="#" class="btn">azul</a></li>
-        <li ><a onclick="myFunction(99)" href="#" class="btn">otro</a></li>
+
+			  <li><a href="#" onClick="localStorage.setItem('background','{% static 'agenda/css/cover_amarillo.css' %}');hey()" class="btn">amarillo</a></li>
+			  <li><a href="#" onClick="localStorage.setItem('background','{% static 'agenda/css/cover_verde.css' %}');hey()" class="btn">verde</a></li>
+			  <li><a href="#" onClick="localStorage.setItem('background','{% static 'agenda/css/cover_rojo.css' %}');hey()" class="btn">rojo</a></li>
+			  <li><a href="#" onClick="localStorage.setItem('background','{% static 'agenda/css/cover_azul.css' %}');hey()" class="btn">azul</a></li>
 			  </ul>
 			  </div>
 
