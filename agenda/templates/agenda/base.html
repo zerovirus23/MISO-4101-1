@@ -18,14 +18,27 @@
 
 <!--<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/pure/0.5.0/pure-min.css"/> -->
 <link rel="stylesheet" type="text/css" href="{% static "agenda/css/bootstrap.min.css" %}"/>
-<link rel="stylesheet" type="text/css" href="{% static "agenda/css/cover.css" %}"/>
+<link id="estilos" rel="stylesheet" type="text/css" href="{% static "agenda/css/cover.css" %}"/>
+
+
+<script language="JavaScript">
+
+hey = function(){
+document.getElementById('estilos').setAttribute('href', localStorage.background);
+}
+
+window.onload = hey (localStorage.background);
+
+</script>
+
+
 </head>
 
 {% load i18n %}
 <body class="{% if is_popup %}popup {%	 endif %}{% block bodyclass %}{% endblock %}">
 
 <!-- Container -->
-<div class="site-wrapper">
+<div id="contenedor"class="site-wrapper">
 {% if not is_popup %}
       <div class="site-wrapper-inner">
 {% block branding %}{% endblock %}
@@ -47,11 +60,12 @@
 			  <div class="btn-group">
 			  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">personalizar<span class="caret"></span>
 			  </button>
+
 			  <ul class="dropdown-menu" role="menu">
-			  <li><a href="#" class="btn">amarillo</a></li>
-			  <li><a href="#" class="btn">verde</a></li>
-			  <li><a href="#" class="btn">rojo</a></li>
-			  <li><a href="#" class="btn">azul</a></li>
+			  <li><a href="#" onClick="localStorage.setItem('background','{% static 'agenda/css/cover_amarillo.css' %}');hey()" class="btn">amarillo</a></li>
+			  <li><a href="#" onClick="localStorage.setItem('background','{% static 'agenda/css/cover_verde.css' %}');hey()" class="btn">verde</a></li>
+			  <li><a href="#" onClick="localStorage.setItem('background','{% static 'agenda/css/cover_rojo.css' %}');hey()" class="btn">rojo</a></li>
+			  <li><a href="#" onClick="localStorage.setItem('background','{% static 'agenda/css/cover_azul.css' %}');hey()" class="btn">azul</a></li>
 			  </ul>
 			  </div>
 
