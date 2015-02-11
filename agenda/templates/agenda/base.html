@@ -31,7 +31,7 @@
 {% block branding %}{% endblock %}
         <div class="cover-container">
 <!-- Header -->
-{% if user.is_active and user.is_staff %}
+{% if user.is_active and user.is_staff %} 
           <div class="masthead clearfix">
             <div class="inner">
 
@@ -48,10 +48,10 @@
 			  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">personalizar<span class="caret"></span>
 			  </button>
 			  <ul class="dropdown-menu" role="menu">
-			  <li><a href="#" class="btn btn-warning">amarillo</a></li>
-			  <li><a href="#" class="btn btn-success">verde</a></li>
-			  <li><a href="#" class="btn btn-danger">rojo</a></li>
-			  <li><a href="#" class="btn btn-primary">azul</a></li>
+			  <li><a href="#" class="btn">amarillo</a></li>
+			  <li><a href="#" class="btn">verde</a></li>
+			  <li><a href="#" class="btn">rojo</a></li>
+			  <li><a href="#" class="btn">azul</a></li>
 			  </ul>
 			  </div>
 
@@ -60,9 +60,18 @@
 	                {% trans 'Bienvenido,' %}
 	                <strong>{% firstof user.get_short_name user.get_username %}</strong>.
 	            {% endblock %}</li>
+              <li>
+                <a href="/logout">salir</a>
+              </li>
                 </ul>
                 </nav>
+{% else %}
+      <div class="masthead clearfix">
+        <div class="inner">
+      <H1>Toro chupame la vergas</H1>
+      <H2>Toro chupame la vergas</H2>
 {% endif %}
+
 {% block nav-global %}{% endblock %}
             </div>
           </div>

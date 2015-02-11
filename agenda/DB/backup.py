@@ -58,10 +58,10 @@ def hacerBackUp():
     # Starting actual database backup process.
     if multi:
         os.remove(FILENAME) 
-        command = 'export PGPASSWORD=%s\npg_dump %s -U %s --file="%s" -h localhost' % (DB_USER_PASSWORD, DB_NAME, DB_USER, FILENAME)
+        command = 'export PGPASSWORD=%s\npg_dump %s -U %s --file="%s" -h %s' % (DB_USER_PASSWORD, DB_NAME, DB_USER, FILENAME,DB_HOST)
         os.system(command)
     else:
-         command = 'export PGPASSWORD=%s\npg_dump %s -U %s --file="%s" -h localhost' % (DB_USER_PASSWORD, DB_NAME, DB_USER, FILENAME)
+         command = 'export PGPASSWORD=%s\npg_dump %s -U %s --file="%s" -h %s' % (DB_USER_PASSWORD, DB_NAME, DB_USER, FILENAME,DB_HOST)
          os.system(command)
          print("comando" + command)
     print ("Backup script completed")

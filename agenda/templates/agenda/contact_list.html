@@ -1,12 +1,14 @@
 {% extends "agenda/base.html" %}
  
 {% block content %}
+	<div class="espacio-contact">
 
 	<a class="btn btn-default" role="button" href="{%url 'agenda:contact_create'%}">Crear nuevo contacto</a>
 
 {% if contact_list %}
 
-
+		
+		
 		<h3>Agenda de Contactos</h3>
 		<form class="form-inline" action="{%url 'agenda:contact_search'%}" method="get">
 
@@ -16,8 +18,9 @@
 
 			<button class="btn btn-default" type="submit">Filtrar</Button>
 		</form>
+		</div>
 
-
+		<div class="scroll-contact">
 		<table class="table table-condensed table-responsive">
 			{% for contact in contact_list %}
 				<tr>
@@ -43,11 +46,13 @@
 		    	</tr>
 		    {% endfor %}
 		</table>
-
+	
+	</div>
 {% else %}
 <div align="center">
     <h2>No hay contactos disponibles.</h2>
 </div>
+</div>
 {% endif %}
-<a href="{%url 'agenda:agenda_list'%}">Volver a Agendas</a>
+<a class="visualizar-contact" href="{%url 'agenda:agenda_list'%}">Volver a Agendas</a>
 {% endblock %}
