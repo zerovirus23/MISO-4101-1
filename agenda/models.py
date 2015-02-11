@@ -59,16 +59,18 @@ class Localization(models.Model):
     email1 = models.EmailField(max_length=254)
     email2 = models.EmailField(max_length=254)
     contact = models.ForeignKey(Contact)
-    
-# Modelo de datos
-class Plantilla(models.Model):
-    name = models.CharField(max_length=50)
-    estilo = models.CharField(max_length=300)
-    users = models.ManyToManyField(User)
-    #agendas = models.ManyToManyField(Agenda)
-    #user = models.ForeignKey(User)
-
 
     #Representación como cadena del objeto
     def __str__(self):
         return self.name + ' - ' + self.phone1 + ' - ' + self.address1 + ' - ' + self.email1
+
+
+class Colores(models.Model):
+    name = models.CharField(max_length=50)
+    estilo = models.CharField(max_length=300)
+    users = models.ManyToManyField(User)
+
+#Representación como cadena del objeto
+def __str__(self):
+    return self.name + ' - '
+
