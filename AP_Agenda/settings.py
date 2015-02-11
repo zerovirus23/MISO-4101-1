@@ -1,9 +1,7 @@
 """
 Django settings for AP_Agenda project.
-
 For more information on this file, see
 https://docs.djangoproject.com/en/1.7/topics/settings/
-
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
 """
@@ -60,10 +58,10 @@ WSGI_APPLICATION = 'AP_Agenda.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'agenda',
-        'USER': 'postgres',
-        'PASSWORD': '000000',
-        'HOST': 'localhost',
+        'NAME': 'dbgfc47jnd3njd',
+        'USER': 'ymrduyhcvbrgmt',
+        'PASSWORD': 'zwhbxcrXIQXfQQSe8fuHNsF4Ty',
+        'HOST': 'ec2-174-129-213-103.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
@@ -92,3 +90,5 @@ STATIC_URL = '/static/'
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 LOGIN_REDIRECT_URL='/'
 LOGIN_URL='/login/'
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
