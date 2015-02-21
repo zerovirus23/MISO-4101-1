@@ -28,7 +28,7 @@ document.getElementById('estilos').setAttribute('href', localStorage.background)
 }
 
 window.onload = hey (localStorage.background);
-localStorage.clear();
+
 </script>
 
 
@@ -82,8 +82,8 @@ localStorage.clear();
 {% else %}
       <div class="masthead clearfix">
         <div class="inner">
-      <H1>Toro chupame la vergas</H1>
-      <H2>Toro chupame la vergas</H2>
+      <H1>Bienvenido</H1>
+      <H2>Agenda Uniandes</H2>
 {% endif %}
 
 {% block nav-global %}{% endblock %}
@@ -127,7 +127,7 @@ localStorage.clear();
 <b>Hernán Darío Tenjo Mateus</b></br>
 <b>Germán David Medina Niño</b></br>
 <b>Germán Leonardo Rojas Muñoz</b></br>
-<b>Juvenal Elias Barrios</b></br>
+<b>Juvenal Elias Barrios Anaya</b></br>
 	      </p>
             </div>
           </div>
