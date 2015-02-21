@@ -40,15 +40,17 @@ WSGI_APPLICATION = 'AP_Agenda.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
-#DB_HOST = 'ec2-54-83-205-46.compute-1.amazonaws.com'
-#DB_USER = 'rmwbyxiytiwdzq'
-#DB_USER_PASSWORD = 'RMxz34GI7yhQV0Cxs_ayf3dMD9'
-#DB_NAME = 'd5snf1vtia97an'
+DB_HOST = 'ec2-174-129-213-103.compute-1.amazonaws.com'
+DB_NAME = 'ddp1cg8vp0hgem'
+DB_USER = 'jklrkeighrrgdv'
+DB_USER_PASSWORD = 'VX6mBzpZF-v7aUIvTRprcUHhZi'
 
-DB_HOST = 'localhost'
-DB_USER = 'postgres'
-DB_USER_PASSWORD = '000000'
-DB_NAME = 'agenda'
+
+
+#DB_HOST = 'localhost'
+#DB_USER = 'postgres'
+#DB_USER_PASSWORD = '000000'
+#DB_NAME = 'agenda'
 
     
 #DATABASES = {
@@ -80,19 +82,36 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
+
+#import dj_database_url
+#DATABASES['default'] =  dj_database_url.config()
+ 
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+ 
+# Allow all host headers
+ALLOWED_HOSTS = ['*']
+ 
+# Static asset configuration
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
-#STATIC_ROOT = 'staticfiles'
+STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
-
-#STATICFILES_DIRS = (
-#    os.path.join(BASE_DIR, 'agenda/static'),
-#    os.path.join(BASE_DIR, 'static/agenda'),
-#)
+ 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 
 #Custome template folder
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 LOGIN_REDIRECT_URL='/'
 LOGIN_URL='/login/'
+MYTIMER = 2
 

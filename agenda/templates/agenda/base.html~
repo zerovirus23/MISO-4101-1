@@ -8,6 +8,8 @@
 {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "agenda/css/rtl.css" %}{% endblock %}" />{% endif %}
 <script type="text/javascript">window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";</script>
 <script type="text/javascript">window.__admin_utc_offset__ = "{% filter escapejs %}{% now "Z" %}{% endfilter %}";</script>
+
+
 {% block extrahead %}{% endblock %}
 {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
 
@@ -24,10 +26,27 @@
 <script language="JavaScript">
 
 hey = function(){
+  //localStorage.setItem('background','{% static 'agenda/css/cover.css' %}');hey();
 document.getElementById('estilos').setAttribute('href', localStorage.background);
 }
 
 window.onload = hey (localStorage.background);
+
+
+if ( localStorage.getItem("background") == null)
+{
+    //default no hay cookies
+    //setear href aqui
+document.getElementById('estilos').setAttribute('href', '{% static "agenda/css/cover.css" %}');
+
+    //getColour = localStorage.background;
+    //$('body').css('background', getColour);
+
+}
+else
+{
+  window.onload = hey (localStorage.background);
+}
 
 </script>
 
@@ -35,7 +54,13 @@ window.onload = hey (localStorage.background);
 </head>
 
 {% load i18n %}
-<body class="{% if is_popup %}popup {%	 endif %}{% block bodyclass %}{% endblock %}">
+<body class="{% if is_popup %}popup {%   endif %}{% block bodyclass %}{% endblock %}">
+
+
+
+
+
+
 
 <!-- Container -->
 <div id="contenedor"class="site-wrapper">
@@ -48,34 +73,35 @@ window.onload = hey (localStorage.background);
           <div class="masthead clearfix">
             <div class="inner">
 
-	      <img class="masthead-brand" src="{% static "agenda/img/agendaTrans2.png" %}"></img>
+        <img class="masthead-brand" src="{% static "agenda/img/agendaTrans2.png" %}"></img>
 
-		<h1>Agenda Feliz Uniandes </h1>
+    <h1>Agenda Feliz Uniandes </h1>
 
-		<nav>
+    <nav>
                 <ul class="nav masthead-nav">
                   <li class="active"><a href="/">Home</a></li>
                  
-		  <li>
-			  <div class="btn-group">
-			  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">personalizar<span class="caret"></span>
-			  </button>
+      <li>
+        <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">personalizar<span class="caret"></span>
+        </button>
 
-			  <ul class="dropdown-menu" role="menu">
-			  <li><a href="#" onClick="localStorage.setItem('background','{% static 'agenda/css/cover_amarillo.css' %}');hey()" class="btn">amarillo</a></li>
-			  <li><a href="#" onClick="localStorage.setItem('background','{% static 'agenda/css/cover_verde.css' %}');hey()" class="btn">verde</a></li>
-			  <li><a href="#" onClick="localStorage.setItem('background','{% static 'agenda/css/cover_rojo.css' %}');hey()" class="btn">rojo</a></li>
-			  <li><a href="#" onClick="localStorage.setItem('background','{% static 'agenda/css/cover_azul.css' %}');hey()" class="btn">azul</a></li>
-			  </ul>
-			  </div>
+        <ul class="dropdown-menu" role="menu">
 
-		  </li>
-		  <li> {% block welcome-msg %}
-	                {% trans 'Bienvenido,' %}
-	                <strong>{% firstof user.get_short_name user.get_username %}</strong>.
-	            {% endblock %}</li>
+        <li><a href="#" onClick="localStorage.setItem('background','{% static 'agenda/css/cover_amarillo.css' %}');hey()" class="btn">amarillo</a></li>
+        <li><a href="#" onClick="localStorage.setItem('background','{% static 'agenda/css/cover_verde.css' %}');hey()" class="btn">verde</a></li>
+        <li><a href="#" onClick="localStorage.setItem('background','{% static 'agenda/css/cover_rojo.css' %}');hey()" class="btn">rojo</a></li>
+        <li><a href="#" onClick="localStorage.setItem('background','{% static 'agenda/css/cover_azul.css' %}');hey()" class="btn">azul</a></li>
+        </ul>
+        </div>
+
+      </li>
+      <li> {% block welcome-msg %}
+                  {% trans 'Bienvenido,' %}
+                  <strong>{% firstof user.get_short_name user.get_username %}</strong>.
+              {% endblock %}</li>
               <li>
-                <a href="/logout">salir</a>
+                <a href="/logout" onClick="localStorage.setItem('background','{% static 'agenda/css/cover.css' %}');hey()">salir</a>
               </li>
                 </ul>
                 </nav>
@@ -123,12 +149,14 @@ window.onload = hey (localStorage.background);
           <div class="mastfoot">
             <div class="inner">
               <p>
+<b>Procesos Agiles</b></br>                
 <b>Jhony Mauricio Toro Echeverria</b></br>
 <b>Hernán Darío Tenjo Mateus</b></br>
 <b>Germán David Medina Niño</b></br>
 <b>Germán Leonardo Rojas Muñoz</b></br>
 <b>Juvenal Elias Barrios Anaya</b></br>
 	      </p>
+
             </div>
           </div>
 {% endblock %}
@@ -140,7 +168,7 @@ window.onload = hey (localStorage.background);
 
 <!--Bootstrap js  -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="{% static "agenda/js/bootstrap.min.js" %}"></script>
+<script src="{% static "agenda/js/bootstrap.min.js" %}"></script>-
 
 </body>
 </html>
