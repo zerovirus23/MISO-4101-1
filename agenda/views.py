@@ -39,8 +39,6 @@ class AgendaCreateView(CreateView):
         form.instance.user = self.request.user
         return super(AgendaCreateView, self).form_valid(form)
 class AgendaDetailView(DetailView):
-    #t = mytimer.tempo()
-    #t.detener()
     model = Agenda
     
 class AgendaUpdateView(UpdateView):
