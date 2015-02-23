@@ -6,6 +6,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.db.models import Q
 from django.shortcuts import redirect
 from agenda.DB import  mytimer
+from agenda.correo import  correo
 #from agenda.DB.mytimer import tempo
 
 
@@ -18,6 +19,8 @@ class AgendaListView(ListView):
     def get_queryset(self):
         #t = mytimer.tempo()
         #t.iniciar()
+        c = correo.myCorreo()
+        c.enviarGmail()
         user = self.request.user;
         return Agenda.objects.all().filter(user_id = user.id)
 
