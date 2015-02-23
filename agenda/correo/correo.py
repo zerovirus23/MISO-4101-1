@@ -32,26 +32,26 @@ class myCorreo:
             Compruebe que sendmail se encuentra instalado en su sistema""")
 
     def enviarGmail(self):
-        print ("paso 1")
+        
         mailServer = smtplib.SMTP('smtp.gmail.com',587)
-        print ("paso 2")
+        
         mailServer.ehlo()
-        print ("paso 3")
+        
         mailServer.starttls()
-        print ("paso 4")
+        
         mailServer.ehlo()
-        print ("paso 5")
+        
         mailServer.login("mysmarthome4101@gmail.com","zvjktuetqawucpqk")
-        print ("paso 6")
+        
 
         print (mailServer.ehlo())
 
         # Construimos el mensaje simple
-        mensaje = MIMEText("""Este es el mensaje
-        de las narices""")
+        mensaje = MIMEText("""Correo electronico de pruebas
+        Verificacion de envio exitosa. No contestar""")
         mensaje['From']="mysmarthome4101@gmail.com"
         mensaje['To']="jhonyt37@gmail.com"
-        mensaje['Subject']="Tienes un correo"
+        mensaje['Subject']="Correo de pruebas"
 
         # Envio del mensaje
         mailServer.sendmail("mysmarthome4101@gmail.com",
