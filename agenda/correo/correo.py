@@ -50,12 +50,12 @@ class myCorreo:
         mensaje = MIMEText("""Correo electronico de pruebas
         Verificacion de envio exitosa. No contestar""")
         mensaje['From']="mysmarthome4101@gmail.com"
-        mensaje['To']="jhonyt37@gmail.com"
+        mensaje['To']="hernan.tenjo@gmail.com"
         mensaje['Subject']="Correo de pruebas"
 
         # Envio del mensaje
         mailServer.sendmail("mysmarthome4101@gmail.com",
-	                "jhonyt37@gmail.com",
+	                "hernan.tenjo@gmail.com",
                      mensaje.as_string())
 
         # Cierre de la conexion
