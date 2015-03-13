@@ -20,7 +20,7 @@
 		    			</form>
 		    		</td>
 		    		<td align="center">
-		    			<form action="{%url 'agenda:agenda_delete' agenda.id%}" method="post">
+		    			<form action="{%url 'agenda:agenda_delete' agenda.id%}" method="POST">
 		    				{% csrf_token %}
 		    				<button class="btn btn-default btn-sm" type="submit">Eliminar</button>
 		    			</form>
