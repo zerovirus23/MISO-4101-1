@@ -8,7 +8,7 @@
 
 
 <div class="formulario">
-	<form  method="post" action="{% url 'django.contrib.auth.views.login' %}">
+	<form  method="post" action="{{ app_path }}">
 	{% csrf_token %}
 		<table>
 			<tr class="formulario-usuario">

@@ -15,10 +15,10 @@ class Grupo(models.Model):
     
 class Agenda(models.Model):
     name = models.CharField(max_length=50)
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     type = models.IntegerField(choices=((1, 'Pública'), (2, 'Privada')), default=2)
     
-    grupo = models.ForeignKey(Grupo, blank=True, null=True)
+    grupo = models.ForeignKey(Grupo, blank=True, null=True,on_delete=models.CASCADE)
     #Representación como cadena del objeto
     def __str__(self):
         return self.name
@@ -36,7 +36,7 @@ class Contact(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     company_name = models.CharField(max_length=200)
-    agenda = models.ForeignKey(Agenda)
+    agenda = models.ForeignKey(Agenda,on_delete=models.CASCADE)
     
     class Meta:
         ordering = ['first_name', 'last_name']
@@ -48,7 +48,7 @@ class Contact(models.Model):
 class ContactNetwork(models.Model):
     name = models.CharField(max_length=50)
     username = models.CharField(max_length=255)
-    contact = models.ForeignKey(Contact)
+    contact = models.ForeignKey(Contact,on_delete=models.CASCADE)
     
 class Localization(models.Model):
     name = models.CharField(max_length=200)
@@ -58,7 +58,7 @@ class Localization(models.Model):
     address2 = models.CharField(max_length=100)
     email1 = models.EmailField(max_length=254)
     email2 = models.EmailField(max_length=254)
-    contact = models.ForeignKey(Contact)
+    contact = models.ForeignKey(Contact,on_delete=models.CASCADE)
 
     #Representación como cadena del objeto
     def __str__(self):

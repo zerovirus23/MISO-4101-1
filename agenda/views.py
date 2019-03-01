@@ -1,6 +1,7 @@
 from django.shortcuts import render#, get_object_or_404
 #from django.http import HttpResponse
-from django.core.urlresolvers import reverse
+from django.urls import reverse
+#from django.core.urlresolvers import reverse
 from agenda.models import Agenda, Contact, Grupo, ContactNetwork, Localization
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.db.models import Q
@@ -14,14 +15,18 @@ from agenda.correo import  correo
 #Clases que gestiona CRUD+L de Agenda
 #==========================================================
 class AgendaListView(ListView):
+    model = Agenda
     context_object_name = 'agenda_list' 
     
     def get_queryset(self):
         #t = mytimer.tempo()
         #t.iniciar()
         c = correo.myCorreo()
+        print("hello world")
         c.enviarGmail()
+        print ("hello world2")
         user = self.request.user;
+        print ("hello world3")
         return Agenda.objects.all().filter(user_id = user.id)
 
 class AgendaListPublicView(ListView):

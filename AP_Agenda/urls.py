@@ -1,19 +1,25 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import url
+from django.urls import include, path, re_path
 from django.contrib import admin
-from django.views.generic.base import TemplateView
+from django.contrib import auth
+from django.contrib.auth import views
+from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
 from AP_Agenda.settings import *
 
-urlpatterns = patterns('',
+app_name = 'agenda'
+
+urlpatterns = [
     # Examples:
     # url(r'^$', 'AP_Agenda.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     
-    url(r'^$', login_required(TemplateView.as_view(template_name='index.html'))),
+    re_path(r'^$', login_required(TemplateView.as_view(template_name='index.html'))),
     #url(r'^$', RedirectView.as_view(url='/index.')),
-    url(r'^agenda/', include('agenda.urls', namespace='agenda')),
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^login/$', 'django.contrib.auth.views.login'),
-    url(r'^logout/$','django.contrib.auth.views.logout',
-        {'next_page': '/'}), 
-)
+    re_path(r'^agenda/', include('agenda.urls')),
+    path('admin/', admin.site.urls),
+    #re_path(r'^admin/', admin.site.urls),
+    #re_path(r'^admin/', admin.site.urls),
+    re_path(r'^login/$', views.LoginView.as_view(template_name='registration/login.html')),
+    re_path(r'^logout/$',views.LogoutView.as_view(),{'next_page': '/'}), 
+]
